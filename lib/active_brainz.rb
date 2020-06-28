@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require "active_brainz/version"
+require "zeitwerk"
+loader = Zeitwerk::Loader.for_gem
+loader.setup
 
-module ActiveBrainz
-  class Error < StandardError; end
-  # Your code goes here...
-end
+module ActiveBrainz; end
+
+loader.eager_load
