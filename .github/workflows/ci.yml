@@ -38,4 +38,4 @@ jobs:
         run: bundle exec rspec --profile 10 --format progress
 
       - name: Lint
-        run: bundle exec rubocop --parallel --display-cop-names
+        run: bundle exec rubocop --config .rubocop.yml --parallel --display-cop-names
