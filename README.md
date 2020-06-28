@@ -44,7 +44,14 @@ TODO: Write usage instructions here
 After checking out the repo, run `bin/setup` to install dependencies. 
 Then, run `rake spec` to run the tests. 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-Make sure to set the `DATABASE_URL` environment variable before running `bin/console`.
+Modify `config/database.yml` to connect to a non-localhost server.
+In Rails applications, Rails' database configuration will take precedence.
+
+The following rake tasks are available:
+
+```
+rake active_brainz:schema:dump  # Creates a db/schema.rb file that is portable against any DB supported by Active Record
+```
 
 To install this gem onto your local machine, run `bundle exec rake install`. 
 To release a new version, update the version number in `version.rb`, commit it and create a git tag starting with `v`, and push it to the repository.
