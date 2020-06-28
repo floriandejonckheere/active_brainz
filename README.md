@@ -50,7 +50,8 @@ In Rails applications, Rails' database configuration will take precedence.
 The following rake tasks are available:
 
 ```
-rake active_brainz:schema:dump  # Creates a db/schema.rb file that is portable against any DB supported by Active Record
+rake active_brainz:models:generate  # Generates models based on db/schema.rb file
+rake active_brainz:schema:dump      # Creates a db/schema.rb file that is portable against any DB supported by Active Record
 ```
 
 To install this gem onto your local machine, run `bundle exec rake install`. 
