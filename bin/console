@@ -11,5 +11,7 @@ require "active_brainz"
 # require "pry"
 # Pry.start
 
+ActiveRecord::Base.establish_connection(ENV.fetch("DATABASE_URL", "postgresql://musicbrainz@localhost/musicbrainz"))
+
 require "irb"
 IRB.start(__FILE__)
