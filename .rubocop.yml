@@ -1,5 +1,8 @@
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 2.7
+  Exclude:
+    - db/schema.rb
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
@@ -23,6 +26,9 @@ Metrics/MethodLength:
 
 Style/Alias:
   EnforcedStyle: prefer_alias_method
+
+Style/Documentation:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: true
