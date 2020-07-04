@@ -3,10 +3,20 @@
 module ActiveBrainz
   module Statements
     class Schema < Base
+      attr_reader :tables
+
+      def initialize
+        @tables = []
+      end
+
       def enable_extension(_); end
 
       def create_table(name, info = {}, &block)
-        Table.new(name).define(info, &block)
+        @tables << Table.new(name).tap { |t| t.define(info, &block) }
+      end
+
+      def render!
+        tables.each(&:render!)
       end
     end
   end

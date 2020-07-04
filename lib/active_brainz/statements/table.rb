@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "erb"
+
 module ActiveBrainz
   module Statements
     class Table < Base
@@ -7,6 +9,14 @@ module ActiveBrainz
 
       def initialize(name)
         @name = name
+      end
+
+      def render!
+        template = File.read ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")
+
+        File.open(ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), "w") do |f|
+          f.write ERB.new(template).result(Binding.new(self).send(:binding))
+        end
       end
 
       def uuid(_, **_); end
