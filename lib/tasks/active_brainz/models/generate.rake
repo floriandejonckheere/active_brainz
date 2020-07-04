@@ -7,8 +7,6 @@ namespace :active_brainz do
   namespace :models do
     desc "Generates models based on db/schema.rb file"
     task :generate do
-      ActiveBrainz::Database.connect!
-
       # Patch AR's schema definition DSL
       class ActiveRecord::Schema
         def self.define(info = {}, &block)

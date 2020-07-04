@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require "singleton"
+require "yaml"
+
+require "active_support/core_ext/module/delegation"
+
 module ActiveBrainz
   class Database
     include Singleton
@@ -8,20 +13,8 @@ module ActiveBrainz
       delegate_missing_to :instance
     end
 
-    def connect!
-      ActiveRecord::Base.establish_connection(configuration["musicbrainz"])
-    end
-
-    def configuration
-      if defined?(Rails)
-        Rails.application.config.database_configuration
-      else
-        ENV.fetch("DATABASE_URL") do
-          require "yaml"
-
-          YAML.load_file(ActiveBrainz.root.join("config/database.yml"))
-        end
-      end
+    def schema
+      @schema ||= ActiveBrainz::Statements::Schema.new
     end
   end
 end
