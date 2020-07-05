@@ -6,17 +6,17 @@ module ActiveBrainz
       attr_reader :tables
 
       def initialize
-        @tables = []
+        @tables = {}
       end
 
       def enable_extension(_); end
 
       def create_table(name, info = {}, &block)
-        @tables << Table.new(name).tap { |t| t.define(info, &block) }
+        @tables[name] = Table.new(name).tap { |t| t.define(info, &block) }
       end
 
       def render!
-        tables.each(&:render!)
+        tables.each_value(&:render!)
       end
     end
   end

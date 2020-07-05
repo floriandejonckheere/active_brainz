@@ -30,7 +30,7 @@ module ActiveBrainz
 
       def references
         candidate_references
-          .filter_map { |ref| ActiveBrainz::Database.schema.tables.find { |t| t.name == ref } }
+          .filter_map { |ref| ActiveBrainz::Database.schema.tables[ref] }
       end
 
       protected
