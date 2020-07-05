@@ -10,12 +10,13 @@ namespace :active_brainz do
       # Patch AR's schema definition DSL
       class ActiveRecord::Schema
         def self.define(info = {}, &block)
-          ActiveBrainz::Database.schema.define(info, &block)
+          ActiveBrainz::Database.schema = ActiveBrainz::Statements::Schema.new("musicbrainz", info, block)
         end
       end
 
       require ActiveBrainz.root.join("db/schema.rb")
 
+      ActiveBrainz::Database.schema.analyze!
       ActiveBrainz::Database.schema.render!
     end
   end

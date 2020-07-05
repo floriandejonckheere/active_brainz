@@ -3,11 +3,17 @@
 module ActiveBrainz
   class <%= class_name %> < Base
     self.table_name = "<%= table_name %>"
-    <%- references.each do |ref| -%>
+    <%- references.each_value do |ref| -%>
 
+    <%- if ref.type == :has_many -%>
+    has_many :f_<%= ref.name %>,
+             class_name: "<%= ref.name.camelize %>",
+             foreign_key: "<%= ref.name %>"
+    <%- else -%>
     belongs_to :f_<%= ref.name %>,
                class_name: "<%= ref.name.camelize %>",
                foreign_key: "<%= ref.name %>"
+    <%- end -%>
     <%- end -%>
   end
 end

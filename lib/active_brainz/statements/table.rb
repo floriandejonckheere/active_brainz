@@ -5,12 +5,12 @@ require "erb"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :name,
-                  :candidate_references
+      attr_reader :references
 
-      def initialize(name)
-        @name = name
-        @candidate_references = {}
+      def initialize(name, info, block)
+        super
+
+        @references = {}
       end
 
       def render!
@@ -20,10 +20,13 @@ module ActiveBrainz
         File.write ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), output
       end
 
-      protected
-
       def integer(name, **options)
-        candidate_references[name] = Reference.new(name, options)
+        table = ActiveBrainz::Database.schema.tables[name]
+
+        return unless table
+
+        references[name] = Reference.new(name, :belongs_to, options)
+        table.references[self.name] = Reference.new(self.name, :has_many)
       end
 
       def uuid(_, **_); end

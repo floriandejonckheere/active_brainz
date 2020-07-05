@@ -5,18 +5,28 @@ module ActiveBrainz
     class Schema < Base
       attr_reader :tables
 
-      def initialize
+      def initialize(name, info, block)
+        super
+
         @tables = {}
       end
 
-      def enable_extension(_); end
+      def analyze!
+        super
 
-      def create_table(name, info = {}, &block)
-        @tables[name] = Table.new(name).tap { |t| t.define(info, &block) }
+        tables.each_value(&:analyze!)
       end
 
       def render!
         tables.each_value(&:render!)
+      end
+
+      protected
+
+      def enable_extension(_); end
+
+      def create_table(name, info = {}, &block)
+        @tables[name] = Table.new(name, info, block)
       end
     end
   end

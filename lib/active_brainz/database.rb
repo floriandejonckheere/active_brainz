@@ -13,8 +13,6 @@ module ActiveBrainz
       delegate_missing_to :instance
     end
 
-    def schema
-      @schema ||= ActiveBrainz::Statements::Schema.new
-    end
+    attr_accessor :schema
   end
 end
