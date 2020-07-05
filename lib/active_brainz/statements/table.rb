@@ -10,7 +10,7 @@ module ActiveBrainz
 
       def initialize(name)
         @name = name
-        @candidate_references = []
+        @candidate_references = {}
       end
 
       def render!
@@ -30,13 +30,14 @@ module ActiveBrainz
 
       def references
         candidate_references
-          .filter_map { |ref| ActiveBrainz::Database.schema.tables[ref] }
+          .values
+          .filter_map { |ref| ActiveBrainz::Database.schema.tables[ref.name] }
       end
 
       protected
 
-      def integer(name, **_)
-        @candidate_references << name
+      def integer(name, **options)
+        candidate_references[name] = Reference.new(name, options)
       end
 
       def uuid(_, **_); end

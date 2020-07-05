@@ -2,7 +2,14 @@
 
 require "zeitwerk"
 loader = Zeitwerk::Loader.for_gem
+
+# Collapse directories
 loader.collapse("lib/active_brainz/models")
+loader.collapse("lib/active_brainz/models/concerns")
+
+# Inflections
+loader.inflector.inflect "has_gid" => "HasGID"
+
 loader.setup
 
 module ActiveBrainz
