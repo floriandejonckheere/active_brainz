@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+module ActiveBrainz
+  class <%= class_name %> < Base
+    self.table_name = "<%= table_name %>"
+    <%- references.each do |ref| -%>
+
+    belongs_to :f_<%= ref.name %>,
+               class_name: "<%= ref.name.camelize %>",
+               foreign_key: "<%= ref.name %>"
+    <%- end -%>
+  end
+end

@@ -5,23 +5,41 @@ require "erb"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :name
+      attr_reader :name,
+                  :candidate_references
 
       def initialize(name)
         @name = name
+        @candidate_references = []
       end
 
       def render!
         template = File.read ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")
 
-        File.open(ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), "w") do |f|
-          f.write ERB.new(template).result(Binding.new(self).send(:binding))
-        end
+        output = ERB.new(template, trim_mode: "-").result(binding)
+        File.write ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), output
+      end
+
+      def class_name
+        name.demodulize.camelize
+      end
+
+      def table_name
+        name.demodulize
+      end
+
+      def references
+        candidate_references
+          .filter_map { |ref| ActiveBrainz::Database.schema.tables.find { |t| t.name == ref } }
+      end
+
+      protected
+
+      def integer(name, **_)
+        @candidate_references << name
       end
 
       def uuid(_, **_); end
-
-      def integer(_, **_); end
 
       def string(_, **_); end
 
