@@ -16,22 +16,8 @@ module ActiveBrainz
       def render!
         template = File.read ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")
 
-        output = ERB.new(template, trim_mode: "-").result(binding)
+        output = ERB.new(template, trim_mode: "-").result(TableBinding.new(self).render_binding)
         File.write ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), output
-      end
-
-      def class_name
-        name.demodulize.camelize
-      end
-
-      def table_name
-        name.demodulize
-      end
-
-      def references
-        candidate_references
-          .values
-          .filter_map { |ref| ActiveBrainz::Database.schema.tables[ref.name] }
       end
 
       protected
