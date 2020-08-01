@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "active_support/inflector"
+
 require "zeitwerk"
 loader = Zeitwerk::Loader.for_gem
 
@@ -8,7 +10,13 @@ loader.collapse("lib/active_brainz/models")
 loader.collapse("lib/active_brainz/models/concerns")
 
 # Inflections
-loader.inflector.inflect "has_gid" => "HasGID"
+loader.inflector = ActiveSupport::Inflector
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.acronym "GID"
+  inflect.acronym "IPI"
+  inflect.acronym "ISNI"
+end
 
 loader.setup
 
