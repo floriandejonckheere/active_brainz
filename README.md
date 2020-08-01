@@ -39,6 +39,10 @@ musicbrainz:
 
 TODO: Write usage instructions here
 
+## Documentation
+
+The SQL scripts used to create the MusicBrainz database schema can be found on their [Github repository](https://github.com/metabrainz/musicbrainz-server/tree/master/admin/sql).
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. 
@@ -50,8 +54,8 @@ In Rails applications, Rails' database configuration will take precedence.
 The following rake tasks are available:
 
 ```
-rake active_brainz:models:generate  # Generates models based on db/schema.rb file
 rake active_brainz:schema:dump      # Creates a db/schema.rb file that is portable against any DB supported by Active Record
+rake active_brainz:models:generate  # Generates models based on db/schema.rb file
 ```
 
 To install this gem onto your local machine, run `bundle exec rake install`. 
@@ -62,7 +66,6 @@ Github Actions will automatically run the test suite, build the `.gem` file and 
 
 Bug reports and pull requests are welcome on GitHub at [https://github.com/floriandejonckheere/active_brainz](https://github.com/floriandejonckheere/active_brainz). 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/floriandejonckheere/active_brainz/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
