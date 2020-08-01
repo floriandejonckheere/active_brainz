@@ -17,6 +17,7 @@ Lint/SafeNavigationWithEmpty:
   Enabled: false
 
 Metrics/BlockLength:
+  Max: 35
   Exclude:
     - ./*.gemspec
     - spec/**/*.rb
