@@ -675,8 +675,12 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "comment", default: "", null: false
   end
 
-  # Could not dump table "editor_language" because of following StandardError
-  #   Unknown type 'fluency' for column 'fluency'
+  create_table "editor_language", primary_key: %w(editor language), force: :cascade do |t|
+    t.integer "editor", null: false
+    t.integer "language", null: false
+    t.enum "fluency", null: false
+    t.index ["language"], name: "editor_language_idx_language"
+  end
 
   create_table "editor_oauth_token", id: :serial, force: :cascade do |t|
     t.integer "editor", null: false
@@ -870,8 +874,11 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["new_id"], name: "event_gid_redirect_idx_new_id"
   end
 
-  # Could not dump table "event_meta" because of following StandardError
-  #   Unknown type 'event_art_presence' for column 'event_art_presence'
+  create_table "event_meta", id: :integer, default: nil, force: :cascade do |t|
+    t.integer "rating", limit: 2
+    t.integer "rating_count"
+    t.enum "event_art_presence", default: "absent", null: false
+  end
 
   create_table "event_rating_raw", primary_key: %w(event editor), force: :cascade do |t|
     t.integer "event", null: false
@@ -2407,8 +2414,10 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["gid"], name: "medium_format_idx_gid", unique: true
   end
 
-  # Could not dump table "medium_index" because of following StandardError
-  #   Unknown type 'cube' for column 'toc'
+  create_table "medium_index", primary_key: "medium", id: :integer, default: nil, force: :cascade do |t|
+    t.column "toc", nil
+    t.index ["toc"], name: "medium_index_idx", using: :gist
+  end
 
   create_table "old_editor_name", id: false, force: :cascade do |t|
     t.string "name", limit: 64, null: false
@@ -2905,8 +2914,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["release"], name: "release_label_idx_release"
   end
 
-  # Could not dump table "release_meta" because of following StandardError
-  #   Unknown type 'cover_art_presence' for column 'cover_art_presence'
+  create_table "release_meta", id: :integer, default: nil, force: :cascade do |t|
+    t.datetime "date_added", default: -> { "now()" }
+    t.string "info_url", limit: 255
+    t.string "amazon_asin", limit: 10
+    t.string "amazon_store", limit: 20
+    t.enum "cover_art_presence", default: "absent", null: false
+  end
 
   create_table "release_packaging", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255, null: false
