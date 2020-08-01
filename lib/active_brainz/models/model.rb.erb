@@ -3,8 +3,10 @@
 module ActiveBrainz
   class <%= class_name %> < Base
     self.table_name = "<%= table_name %>"
+    <%- if primary_key %>
+    self.primary_key = %w(<%= primary_key.try(:join, " ") || primary_key %>)
+    <%- end %>
     <%- references.each_value do |ref| -%>
-
     <%- if ref.type == :has_many -%>
     has_many :f_<%= ref.name %>,
              class_name: "<%= ref.name.camelize %>",

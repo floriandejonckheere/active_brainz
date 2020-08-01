@@ -5,12 +5,13 @@ require "erb"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :references
+      attr_reader :primary_key, :references
 
       def initialize(name, info, block)
         super
 
         @references = {}
+        @primary_key = info[:primary_key]
       end
 
       def render!
