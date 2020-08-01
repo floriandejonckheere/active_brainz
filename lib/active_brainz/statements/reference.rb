@@ -10,7 +10,6 @@ module ActiveBrainz
                   :class_name
 
       def initialize(name, type, options = {})
-        puts "#{name} == #{options[:column]}"
         @name = name == options[:column]&.to_s ? :"f_#{name}" : name
         @type = type
         @options = options
