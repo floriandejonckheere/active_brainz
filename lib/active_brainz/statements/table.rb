@@ -21,14 +21,11 @@ module ActiveBrainz
         File.write ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), output
       end
 
-      def integer(name, **options)
-        table = ActiveBrainz::Database.schema.tables[name]
+      def column(_, *_); end
 
-        return unless table
+      def enum(_, **_); end
 
-        references[name] = Reference.new(name, :belongs_to, options)
-        table.references[self.name] = Reference.new(self.name, :has_many)
-      end
+      def integer(_, **_); end
 
       def uuid(_, **_); end
 

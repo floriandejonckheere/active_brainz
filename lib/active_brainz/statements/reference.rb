@@ -5,12 +5,18 @@ module ActiveBrainz
     class Reference
       attr_reader :name,
                   :type,
-                  :options
+                  :options,
+                  :column,
+                  :class_name
 
       def initialize(name, type, options = {})
-        @name = name
+        puts "#{name} == #{options[:column]}"
+        @name = name == options[:column]&.to_s ? :"f_#{name}" : name
         @type = type
         @options = options
+
+        @column = options[:column] || name
+        @class_name = name.camelize
       end
     end
   end
