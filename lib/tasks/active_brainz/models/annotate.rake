@@ -2,7 +2,6 @@
 
 require "active_brainz"
 
-# rubocop:disable Style/ClassAndModuleChildren
 namespace :active_brainz do
   namespace :models do
     desc "Annotate models"
@@ -37,4 +36,3 @@ namespace :active_brainz do
     end
   end
 end
-# rubocop:enable Style/ClassAndModuleChildren
