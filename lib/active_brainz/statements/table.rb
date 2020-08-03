@@ -10,7 +10,7 @@ module ActiveBrainz
       def initialize(name, info, block)
         super
 
-        @references = {}
+        @references = []
         @primary_key = info[:primary_key]
       end
 

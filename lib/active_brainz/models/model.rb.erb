@@ -6,10 +6,10 @@ module ActiveBrainz
     <%- if primary_key -%>
     self.primary_key = <%= primary_key.respond_to?(:each) ? "%w(#{primary_key.join " "})" : "\"#{primary_key}\"" %>
     <%- end -%>
-    <%- references.each_value do |ref| -%>
+    <%- references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
 
-    has_many :<%= ref.name.pluralize %>,
+    has_many :<%= ref.name %>,
              class_name: "<%= ref.class_name %>",
              foreign_key: "<%= ref.column %>"
     <%- else -%>
