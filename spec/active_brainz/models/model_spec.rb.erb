@@ -2,6 +2,10 @@
 
 RSpec.describe ActiveBrainz::<%= class_name %> do
   subject(:<%= table_name %>) { build(:<%= table_name %>) }
+  <%- if gid -%>
+
+  it_behaves_like "it has a GID"
+  <%- end -%>
   <%- references.each do |ref| %>
   <%- if ref.type == :has_many -%>
 

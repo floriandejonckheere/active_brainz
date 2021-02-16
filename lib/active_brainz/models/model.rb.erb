@@ -6,6 +6,10 @@ module ActiveBrainz
     <%- if primary_key -%>
     self.primary_key = <%= primary_key.respond_to?(:each) ? "%w(#{primary_key.join " "})" : "\"#{primary_key}\"" %>
     <%- end -%>
+    <%- if gid -%>
+
+    include HasGID
+    <%- end -%>
     <%- references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
 

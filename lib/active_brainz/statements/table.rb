@@ -5,7 +5,7 @@ require "erb"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :primary_key, :references
+      attr_reader :primary_key, :references, :gid
 
       TEMPLATES = {
         model: File.read(ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")),
@@ -32,13 +32,15 @@ module ActiveBrainz
         render(TEMPLATES[:factory], ActiveBrainz.root.join("spec/factories/models/#{name}.rb"))
       end
 
+      def uuid(name, **_)
+        @gid = true if name == "gid"
+      end
+
       def column(_, *_); end
 
       def enum(_, **_); end
 
       def integer(_, **_); end
-
-      def uuid(_, **_); end
 
       def string(_, **_); end
 
