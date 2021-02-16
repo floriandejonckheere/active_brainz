@@ -48,6 +48,8 @@ module ActiveBrainz
       def index(_, **_); end
 
       def jsonb(_, **_); end
+
+      def check_constraint(_, **_); end
     end
   end
 end

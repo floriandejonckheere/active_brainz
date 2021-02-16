@@ -5,3 +5,4 @@ musicbrainz:
   host: localhost
   username: musicbrainz
   password: musicbrainz
+  database: musicbrainz_db
