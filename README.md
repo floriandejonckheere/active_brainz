@@ -1,7 +1,7 @@
 # ActiveBrainz
 
-![CI](https://github.com/floriandejonckheere/active_brainz/workflows/CI/badge.svg)
-![Release](https://github.com/floriandejonckheere/active_brainz/workflows/Create%20release/badge.svg)
+![Continuous Integration](https://github.com/floriandejonckheere/active_brainz/workflows/Continuous%20Integration/badge.svg)
+![Release](https://img.shields.io/github/v/release/floriandejonckheere/active_brainz?label=Latest%20release)
 
 ActiveRecord integrations for the [MusicBrainz database](https://musicbrainz.org/doc/MusicBrainz_Database).
 
