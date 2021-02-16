@@ -19,6 +19,8 @@ namespace :active_brainz do
 
       ActiveBrainz::Database.schema.analyze!
       ActiveBrainz::Database.schema.render!
+
+      puts "Generated #{ActiveBrainz::Database.schema.tables.count} models"
     end
   end
 end

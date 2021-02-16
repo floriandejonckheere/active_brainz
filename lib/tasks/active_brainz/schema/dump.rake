@@ -18,6 +18,8 @@ namespace :active_brainz do
       File.open(ActiveBrainz.root.join("db/schema.rb"), "w:utf-8") do |file|
         ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
       end
+
+      puts "Database schema dumped to db/schema.rb"
     end
   end
 end
