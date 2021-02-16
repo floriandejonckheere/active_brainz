@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+FactoryBot.define do
+  factory :<%= table_name %>, class: "ActiveBrainz::<%= class_name %>" do
+    <%- Array(primary_key).each do |key| -%>
+    sequence(:<%= key %>) { |n| n }
+    <%- end -%>
+  end
+end

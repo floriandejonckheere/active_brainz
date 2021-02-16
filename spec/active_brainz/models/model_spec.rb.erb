@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+RSpec.describe ActiveBrainz::<%= class_name %> do
+  subject(:<%= table_name %>) { build(:<%= table_name %>) }
+  <%- references.each do |ref| %>
+  <%- if ref.type == :has_many -%>
+
+  it { is_expected.to have_many :<%= ref.name %> }
+  <%- else -%>
+
+  it { is_expected.to belong_to :<%= ref.name %> }
+  <%- end -%>
+  <%- end -%>
+end
