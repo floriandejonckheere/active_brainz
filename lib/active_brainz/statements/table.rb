@@ -15,10 +15,12 @@ module ActiveBrainz
       end
 
       def render!
-        template = File.read ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")
+        filename = ActiveBrainz.root.join "lib/active_brainz/models/#{name}.rb"
+
+        return if File.exist?(filename)
 
         output = ERB.new(template, trim_mode: "-").result(TableBinding.new(self).render_binding)
-        File.write ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"), output
+        File.write filename, output
       end
 
       def column(_, *_); end
@@ -50,6 +52,10 @@ module ActiveBrainz
       def jsonb(_, **_); end
 
       def check_constraint(_, **_); end
+
+      def self.template
+        @template ||= File.read ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")
+      end
     end
   end
 end
