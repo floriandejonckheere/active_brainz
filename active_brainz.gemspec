@@ -12,9 +12,8 @@ Gem::Specification.new do |spec|
   spec.description   = "ActiveRecord integration with the MusicBrainz database"
   spec.homepage      = "https://github.com/floriandejonckheere/active_brainz"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.6")
 
-  spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/floriandejonckheere/active_brainz.git"
 
   # Specify which files should be added to the gem when it is released.
@@ -41,4 +40,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "reek"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "rubocop-performance"
+  spec.add_development_dependency "rubocop-rspec"
 end
