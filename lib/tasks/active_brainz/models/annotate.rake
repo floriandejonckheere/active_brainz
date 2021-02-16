@@ -14,6 +14,7 @@ namespace :active_brainz do
                model_dir: ["lib/active_brainz/models"],
                position: "after",
                position_in_class: "after",
+               show_indexes: true,
                classified_sort: "true",
                require: ["active_brainz"],
                trace: "true"
