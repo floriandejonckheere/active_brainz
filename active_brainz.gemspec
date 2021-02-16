@@ -32,7 +32,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "annotate"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "debase"
+  spec.add_development_dependency "factory_bot"
   spec.add_development_dependency "fasterer"
+  spec.add_development_dependency "ffaker"
   spec.add_development_dependency "flay"
   spec.add_development_dependency "overcommit"
   spec.add_development_dependency "pronto"
@@ -42,4 +44,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "rubocop-performance"
   spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "timecop"
 end
