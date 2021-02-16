@@ -16,8 +16,9 @@ module ActiveBrainz
       def initialize(name, info, block)
         super
 
+        # Primary key is either defined (primary_key: ...) or serial (id: :serial)
+        @primary_key = info[:primary_key] || (info[:id] ? "id" : nil)
         @references = []
-        @primary_key = info[:primary_key]
       end
 
       def render!
