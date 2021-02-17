@@ -10,6 +10,10 @@ module ActiveBrainz
         @name = name
         @type = type
       end
+
+      def to_s
+        "#{name} (#{type})"
+      end
     end
   end
 end

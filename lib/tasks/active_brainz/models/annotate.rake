@@ -15,6 +15,7 @@ namespace :active_brainz do
                position: "after",
                position_in_class: "after",
                show_indexes: true,
+               show_foreign_keys: true,
                classified_sort: "true",
                require: ["active_brainz"],
                trace: "true"

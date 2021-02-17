@@ -92,3 +92,11 @@ end
 #  artist_idx_txt_sort             (mb_simple_tsvector((sort_name)::text)) USING gin
 #  artist_idx_uniq_name_comment    (name,comment) UNIQUE WHERE (comment IS NOT NULL)
 #
+# Foreign Keys
+#
+#  artist_fk_area        (area => area.id)
+#  artist_fk_begin_area  (begin_area => area.id)
+#  artist_fk_end_area    (end_area => area.id)
+#  artist_fk_gender      (gender => gender.id)
+#  artist_fk_type        (type => artist_type.id)
+#

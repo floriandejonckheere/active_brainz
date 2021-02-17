@@ -30,6 +30,10 @@ module ActiveBrainz
 
         name
       end
+
+      def to_s
+        "#{from_table} #{type} #{to_table}"
+      end
     end
   end
 end
