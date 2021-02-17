@@ -6,7 +6,7 @@ module ActiveBrainz
     <%- if primary_key -%>
     self.primary_key = <%= primary_key.respond_to?(:each) ? "%w(#{primary_key.join " "})" : "\"#{primary_key}\"" %>
     <%- end -%>
-    <%- if gid -%>
+    <%- if gid? -%>
 
     include HasGID
     <%- end -%>
@@ -21,6 +21,12 @@ module ActiveBrainz
     belongs_to :<%= ref.name %>,
                class_name: "<%= ref.class_name %>",
                foreign_key: "<%= ref.column %>"
+    <%- end -%>
+    <%- end -%>
+    <%- if attributes.any? -%>
+
+    <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+    attribute :<%= attr.name %><% if [:string, :text].exclude?(attr.type) %>, :<%= attr.type %><% end %>
     <%- end -%>
     <%- end -%>
   end

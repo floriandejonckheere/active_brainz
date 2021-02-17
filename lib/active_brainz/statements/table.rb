@@ -5,7 +5,7 @@ require "erb"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :primary_key, :references, :gid
+      attr_reader :primary_key, :references, :attributes
 
       TEMPLATES = {
         model: File.read(ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")),
@@ -19,6 +19,7 @@ module ActiveBrainz
         # Primary key is either defined (primary_key: ...) or serial (id: :serial)
         @primary_key = info[:primary_key] || (info[:id] ? "id" : nil)
         @references = []
+        @attributes = []
       end
 
       def render!
@@ -32,35 +33,25 @@ module ActiveBrainz
         render(TEMPLATES[:factory], ActiveBrainz.root.join("spec/factories/models/#{name}.rb"))
       end
 
-      def uuid(name, **_)
-        @gid = true if name == "gid"
+      def attribute(name, **_options)
+        attributes << Attribute.new(name, __callee__)
       end
 
-      def column(_, *_); end
-
-      def enum(_, **_); end
-
-      def integer(_, **_); end
-
-      def string(_, **_); end
-
-      def text(_, **_); end
-
-      def date(_, **_); end
-
-      def datetime(_, **_); end
-
-      def time(_, **_); end
-
-      def interval(_, **_); end
-
-      def point(_, **_); end
-
-      def boolean(_, **_); end
+      alias uuid attribute
+      alias integer attribute
+      alias string attribute
+      alias text attribute
+      alias date attribute
+      alias datetime attribute
+      alias time attribute
+      alias boolean attribute
+      alias jsonb attribute
+      alias interval attribute
+      alias column attribute
+      alias enum attribute
+      alias point attribute
 
       def index(_, **_); end
-
-      def jsonb(_, **_); end
 
       def check_constraint(_, **_); end
 

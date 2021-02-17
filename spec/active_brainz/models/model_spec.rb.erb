@@ -2,17 +2,24 @@
 
 RSpec.describe ActiveBrainz::<%= class_name %> do
   subject(:<%= table_name %>) { build(:<%= table_name %>) }
-  <%- if gid -%>
+  <%- if gid? -%>
 
   it_behaves_like "it has a GID"
   <%- end -%>
+  <%- if references.any? -%>
+
   <%- references.each do |ref| %>
   <%- if ref.type == :has_many -%>
-
   it { is_expected.to have_many :<%= ref.name %> }
   <%- else -%>
-
   it { is_expected.to belong_to :<%= ref.name %> }
+  <%- end %>
+  <%- end -%>
+  <%- end -%>
+  <%- if attributes.any? -%>
+
+  <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+  it { is_expected.to have_attributes :<%= attr.name %> }
   <%- end -%>
   <%- end -%>
 end

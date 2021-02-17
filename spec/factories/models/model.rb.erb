@@ -2,8 +2,24 @@
 
 FactoryBot.define do
   factory :<%= table_name %>, class: "ActiveBrainz::<%= class_name %>" do
-    <%- Array(primary_key).each do |key| -%>
-    sequence(:<%= key %>) { |n| n }
+    <%- Array(primary_key).reject { |p| p == "id"}.each do |key| -%>
+    sequence(:<%= key %>)
+    <%- end -%>
+    <%- if references.any? -%>
+
+    <%- references.each do |ref| -%>
+    association :<%= ref.name %>, factory: <%= ref.name %>
+    <%- end -%>
+    <%- end -%>
+    <%- if gid? -%>
+
+    gid { FFaker::Guid.guid }
+    <%- end -%>
+    <%- if attributes.any? -%>
+
+    <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+    it { is_expected.to have_attributes :<%= attr.name %> }
+    <%- end -%>
     <%- end -%>
   end
 end
