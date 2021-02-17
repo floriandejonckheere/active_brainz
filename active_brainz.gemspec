@@ -18,11 +18,10 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  end
+  spec.files = Dir["README.md", "LICENSE.md", "Gemfile", "lib/active_brainz.rb",
+                   "lib/active_brainz/version.rb", "lib/active_brainz/models/**/*.rb"]
   spec.bindir        = "bin"
-  spec.executables   = spec.files.grep(%r(^bin/)) { |f| File.basename(f) }
+  spec.executables   = []
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activerecord"
