@@ -29,7 +29,7 @@ module ActiveBrainz
       # "area_attribute",
       # "area_tag",
       # "area_tag_raw",
-      # "artist",
+      "artist",
       # "artist_alias_type",
       # "artist_alias",
       # "artist_annotation",

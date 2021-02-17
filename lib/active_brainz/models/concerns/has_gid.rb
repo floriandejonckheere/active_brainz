@@ -5,6 +5,8 @@ module ActiveBrainz
     extend ActiveSupport::Concern
 
     included do
+      attribute :gid
+
       validates :gid,
                 presence: true,
                 uniqueness: true

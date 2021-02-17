@@ -31,12 +31,15 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Enabled: false
 
+RSpec/FilePath:
+  Exclude:
+    - spec/active_brainz/models/*_spec.rb
+
 Style/Documentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: true
-
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
