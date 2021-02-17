@@ -11,9 +11,26 @@ jobs:
   build:
     name: Continuous Integration
     runs-on: ubuntu-20.04
+
+    container:
+      image: ruby:3.0-alpine
+
     strategy:
       matrix:
         ruby: [ "2.6", "2.7", "3.0" ]
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USERNAME: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v2
