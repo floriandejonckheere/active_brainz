@@ -3,7 +3,6 @@
 module ActiveBrainz
   class Artist < Base
     self.table_name = "artist"
-    self.primary_key = "id"
     self.inheritance_column = nil
 
     include HasGID
