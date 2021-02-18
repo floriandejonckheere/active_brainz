@@ -5,11 +5,11 @@ RSpec.describe ActiveBrainz::Artist do
 
   it_behaves_like "it has a GID"
 
-  it { is_expected.to belong_to(:area).class_name("Area").optional }
-  it { is_expected.to belong_to(:begin_area).class_name("Area").optional }
-  it { is_expected.to belong_to(:end_area).class_name("Area").optional }
-  it { is_expected.to belong_to(:type).class_name("ArtistType").optional }
-  it { is_expected.to belong_to(:gender).class_name("Gender").optional }
+  it { is_expected.to belong_to(:artist_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_begin_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_end_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_type).class_name("ArtistType").optional }
+  it { is_expected.to belong_to(:artist_gender).class_name("Gender").optional }
 
   it { is_expected.to have_attributes :name, :sort_name }
   it { is_expected.to have_attributes :begin_date_year, :begin_date_month, :begin_date_day }
