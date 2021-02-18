@@ -31,7 +31,7 @@ FactoryBot.define do
 
     ended { end_date.nil? }
 
-    comment { FFaker::Lorem.words(10).join(" ") }
+    comment { FFaker::Lorem.sentence }
     edits_pending { FFaker::Random.rand(0..10) }
     last_updated { FFaker::Time.datetime }
   end
