@@ -45,7 +45,7 @@ module ActiveBrainz
       # "artist_credit",
       # "artist_credit_name",
       # "artist_gid_redirect",
-      # "artist_type",
+      "artist_type",
       # "autoeditor_election",
       # "autoeditor_election_vote",
       # "cdtoc",
