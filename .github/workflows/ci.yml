@@ -12,9 +12,6 @@ jobs:
     name: Continuous Integration
     runs-on: ubuntu-20.04
 
-    container:
-      image: ruby:3.0-alpine
-
     strategy:
       matrix:
         ruby: [ "2.6", "2.7", "3.0" ]
@@ -40,9 +37,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+        env:
+          ImageOS: ubuntu20.04
 
       - name: Test
         run: bundle exec rspec --profile 10 --format progress
+        env:
+          PG_HOST: postgres
 
       - name: Lint
         run: bundle exec rubocop --config .rubocop.yml --parallel --display-cop-names
