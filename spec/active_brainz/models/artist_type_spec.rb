@@ -9,8 +9,8 @@ RSpec.describe ActiveBrainz::ArtistType do
   it { is_expected.to have_many :artist_type_children }
   it { is_expected.to belong_to(:artist_type_parent).optional }
 
-  it { is_expected.to have_attributes :name }
-  it { is_expected.to have_attributes :description }
+  it { is_expected.to respond_to :name }
+  it { is_expected.to respond_to :description }
 
-  it { is_expected.to have_attributes :child_order }
+  it { is_expected.to respond_to :child_order }
 end

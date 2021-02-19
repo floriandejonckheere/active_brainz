@@ -23,7 +23,7 @@ RSpec.describe ActiveBrainz::<%= class_name %> do
   <%- if attributes.any? -%>
 
   <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
-  it { is_expected.to have_attributes :<%= attr.name %> }
+  it { is_expected.to respond_to :<%= attr.name %> }
   <%- end -%>
   <%- end -%>
 end

@@ -11,10 +11,10 @@ RSpec.describe ActiveBrainz::Artist do
   it { is_expected.to belong_to(:artist_type).class_name("ArtistType").optional }
   it { is_expected.to belong_to(:artist_gender).class_name("Gender").optional }
 
-  it { is_expected.to have_attributes :name, :sort_name }
-  it { is_expected.to have_attributes :begin_date_year, :begin_date_month, :begin_date_day }
-  it { is_expected.to have_attributes :end_date_year, :end_date_month, :end_date_day }
-  it { is_expected.to have_attributes :comment, :edits_pending, :last_updated }
+  it { is_expected.to respond_to :name, :sort_name }
+  it { is_expected.to respond_to :begin_date_year, :begin_date_month, :begin_date_day }
+  it { is_expected.to respond_to :end_date_year, :end_date_month, :end_date_day }
+  it { is_expected.to respond_to :comment, :edits_pending, :last_updated }
 
   describe "#begin_date" do
     it "returns a complete date" do
