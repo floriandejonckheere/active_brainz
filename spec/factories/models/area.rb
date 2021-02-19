@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :artist, class: "ActiveBrainz::Artist" do
-    association :artist_area, factory: :area
-    association :artist_begin_area, factory: :area
-    association :artist_end_area, factory: :area
-
-    association :artist_type, factory: :artist_type
-    # association :artist_gender, factory: :gender
-
+  factory :area, class: "ActiveBrainz::Area" do
     gid { FFaker::Guid.guid }
-    name { FFaker::Name.name }
-    sort_name { name }
+
+    # association :area_type
+
+    name { FFaker::Lorem.word }
+    comment { FFaker::Lorem.word }
 
     transient do
       begin_date { [FFaker::Time.date, nil].sample }
@@ -31,8 +27,19 @@ FactoryBot.define do
 
     ended { end_date.nil? }
 
-    comment { FFaker::Lorem.sentence }
-    edits_pending { FFaker::Random.rand(0..10) }
+    edits_pending { FFaker::Lorem.word }
     last_updated { FFaker::Time.datetime }
+
+    trait :with_artists do
+      area_artists { build_list(:artist, 3) }
+    end
+
+    trait :with_begin_area_artists do
+      begin_area_artists { build_list(:artist, 3) }
+    end
+
+    trait :with_end_area_artists do
+      end_area_artists { build_list(:artist, 3) }
+    end
   end
 end

@@ -8,20 +8,20 @@ module ActiveBrainz
     include HasGID
     include HasBeginEndDate
 
-    # belongs_to :artist_area,
-    #            class_name: "Area",
-    #            foreign_key: "area",
-    #            optional: true
+    belongs_to :artist_area,
+               class_name: "Area",
+               foreign_key: "area",
+               optional: true
 
-    # belongs_to :artist_begin_area,
-    #            class_name: "Area",
-    #            foreign_key: "begin_area",
-    #            optional: true
+    belongs_to :artist_begin_area,
+               class_name: "Area",
+               foreign_key: "begin_area",
+               optional: true
 
-    # belongs_to :artist_end_area,
-    #            class_name: "Area",
-    #            foreign_key: "end_area",
-    #            optional: true
+    belongs_to :artist_end_area,
+               class_name: "Area",
+               foreign_key: "end_area",
+               optional: true
 
     belongs_to :artist_type,
                class_name: "ArtistType",

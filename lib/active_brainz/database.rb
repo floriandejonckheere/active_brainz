@@ -19,7 +19,7 @@ module ActiveBrainz
       # "annotation",
       # "application",
       # "area_type",
-      # "area",
+      "area",
       # "area_gid_redirect",
       # "area_alias_type",
       # "area_alias",

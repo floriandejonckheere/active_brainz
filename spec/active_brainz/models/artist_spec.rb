@@ -6,9 +6,9 @@ RSpec.describe ActiveBrainz::Artist, type: :model do
   it_behaves_like "it has a GID"
   it_behaves_like "it has a begin and end date"
 
-  # it { is_expected.to belong_to(:artist_area).class_name("Area").optional }
-  # it { is_expected.to belong_to(:artist_begin_area).class_name("Area").optional }
-  # it { is_expected.to belong_to(:artist_end_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_begin_area).class_name("Area").optional }
+  it { is_expected.to belong_to(:artist_end_area).class_name("Area").optional }
   it { is_expected.to belong_to(:artist_type).class_name("ArtistType").optional }
   # it { is_expected.to belong_to(:artist_gender).class_name("Gender").optional }
 
