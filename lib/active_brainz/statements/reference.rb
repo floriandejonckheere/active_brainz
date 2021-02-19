@@ -26,9 +26,7 @@ module ActiveBrainz
         name = column
         name = to_table if ["id", "type", from_table].include? name
         name = name.pluralize if type == :has_many
-        name = "#{from_table}_#{name}" if name == column
-
-        name
+        "#{from_table}_#{name}"
       end
 
       def to_s
