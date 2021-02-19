@@ -3,8 +3,10 @@
 RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   subject(:<%= table_name %>) { build(:<%= table_name %>) }
   <%- if gid? -%>
-
   it_behaves_like "it has a GID"
+  <%- end -%>
+  <%- if begin_end_date? -%>
+  it_behaves_like "it has a begin and end date"
   <%- end -%>
   <%- if references.any? -%>
 
@@ -22,7 +24,7 @@ RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   <%- end -%>
   <%- if attributes.any? -%>
 
-  <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+  <%- filtered_attributes.each do |attr| -%>
   it { is_expected.to respond_to :<%= attr.name %> }
   <%- end -%>
   <%- end -%>

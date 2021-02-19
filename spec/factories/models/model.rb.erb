@@ -19,10 +19,30 @@ FactoryBot.define do
     <%- end -%>
     <%- end -%>
     <%- end -%>
-    <%- if attributes.any? -%>
+    <%- if filtered_attributes.any? -%>
 
-    <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+    <%- filtered_attributes.each do |attr| -%>
     <%= attr.name %> { FFaker::Lorem.word }
+    <%- end -%>
+    <%- if begin_end_date? %>
+
+    transient do
+      begin_date { [FFaker::Time.date, nil].sample }
+    end
+
+    begin_date_year { begin_date&.year }
+    begin_date_month { begin_date&.month }
+    begin_date_day { begin_date&.day }
+
+    transient do
+      end_date { [FFaker::Time.date, nil].sample }
+    end
+
+    end_date_year { end_date&.year }
+    end_date_month { end_date&.month }
+    end_date_day { end_date&.day }
+
+    ended { end_date.nil? }
     <%- end -%>
     <%- end -%>
   end

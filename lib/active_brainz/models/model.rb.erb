@@ -10,6 +10,9 @@ module ActiveBrainz
 
     include HasGID
     <%- end -%>
+    <%- if begin_end_date? %>
+    include HasBeginEndDate
+    <%- end -%>
     <%- references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
 
@@ -26,7 +29,7 @@ module ActiveBrainz
     <%- end -%>
     <%- if attributes.any? -%>
 
-    <%- attributes.reject { |a| a.name == "gid" }.each do |attr| -%>
+    <%- filtered_attributes.each do |attr| -%>
     attribute :<%= attr.name %><% if [:string, :text].exclude?(attr.type) %>, :<%= attr.type %><% end %>
     <%- end -%>
     <%- end -%>
