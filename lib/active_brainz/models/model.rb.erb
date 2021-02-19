@@ -20,7 +20,8 @@ module ActiveBrainz
 
     belongs_to :<%= ref.name %>,
                class_name: "<%= ref.class_name %>",
-               foreign_key: "<%= ref.column %>"
+               foreign_key: "<%= ref.column %>"<%- if ref.null -%>,
+               optional: true<%- end %>
     <%- end -%>
     <%- end -%>
     <%- if attributes.any? -%>

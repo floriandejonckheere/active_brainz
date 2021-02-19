@@ -4,11 +4,13 @@ module ActiveBrainz
   module Statements
     class Attribute
       attr_reader :name,
-                  :type
+                  :type,
+                  :options
 
-      def initialize(name, type)
+      def initialize(name, type, options)
         @name = name
         @type = type
+        @options = options
       end
 
       def to_s

@@ -11,6 +11,9 @@ module ActiveBrainz
                   :name,
                   :class_name
 
+      # Nullability is only set when table columns are parsed
+      attr_accessor :null
+
       def initialize(from_table, to_table, type, options = {})
         @from_table = from_table
         @to_table = to_table

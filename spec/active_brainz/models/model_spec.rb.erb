@@ -12,8 +12,12 @@ RSpec.describe ActiveBrainz::<%= class_name %> do
   <%- if ref.type == :has_many -%>
   it { is_expected.to have_many :<%= ref.name %> }
   <%- else -%>
+  <%- if ref.null -%>
+  it { is_expected.to belong_to(:<%= ref.name %>).optional }
+  <%- else -%>
   it { is_expected.to belong_to :<%= ref.name %> }
-  <%- end %>
+  <%- end -%>
+  <%- end -%>
   <%- end -%>
   <%- end -%>
   <%- if attributes.any? -%>

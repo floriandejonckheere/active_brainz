@@ -33,12 +33,20 @@ module ActiveBrainz
         render(TEMPLATES[:factory], ActiveBrainz.root.join("spec/factories/models/#{name}.rb"))
       end
 
-      def attribute(name, **_options)
-        attributes << Attribute.new(name, __callee__)
+      def attribute(name, **options)
+        attributes << Attribute.new(name, __callee__, options)
+      end
+
+      # Integers are used as foreign keys
+      def integer(name, **options)
+        reference = references.find { |ref| ref.column == name }
+
+        return reference.null = true if reference
+
+        attributes << Attribute.new(name, :integer, options)
       end
 
       alias uuid attribute
-      alias integer attribute
       alias string attribute
       alias text attribute
       alias date attribute
