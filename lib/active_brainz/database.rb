@@ -95,7 +95,7 @@ module ActiveBrainz
       # "event_type",
       # "release_first_release_date",
       # "recording_first_release_date",
-      # "gender",
+      "gender",
       # "genre",
       # "genre_alias",
       # "instrument_type",
