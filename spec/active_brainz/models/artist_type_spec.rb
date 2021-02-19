@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ActiveBrainz::ArtistType do
+RSpec.describe ActiveBrainz::ArtistType, type: :model do
   subject(:artist_type) { build(:artist_type) }
 
   it_behaves_like "it has a GID"

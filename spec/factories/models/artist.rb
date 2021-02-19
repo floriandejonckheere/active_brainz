@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :artist, class: "ActiveBrainz::Artist" do
-    association :area, factory: :area
-    association :begin_area, factory: :area
-    association :end_area, factory: :area
+    # association :artist_area, factory: :area
+    # association :artist_begin_area, factory: :area
+    # association :artist_end_area, factory: :area
 
-    association :type, factory: :type
-    association :gender, factory: :gender
+    association :artist_type, factory: :artist_type
+    # association :artist_gender, factory: :gender
 
     gid { FFaker::Guid.guid }
     name { FFaker::Name.name }

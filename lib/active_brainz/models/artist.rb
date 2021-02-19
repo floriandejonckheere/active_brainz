@@ -7,30 +7,30 @@ module ActiveBrainz
 
     include HasGID
 
-    belongs_to :artist_area,
-               class_name: "Area",
-               foreign_key: "area",
-               optional: true
+    # belongs_to :artist_area,
+    #            class_name: "Area",
+    #            foreign_key: "area",
+    #            optional: true
 
-    belongs_to :artist_begin_area,
-               class_name: "Area",
-               foreign_key: "begin_area",
-               optional: true
+    # belongs_to :artist_begin_area,
+    #            class_name: "Area",
+    #            foreign_key: "begin_area",
+    #            optional: true
 
-    belongs_to :artist_end_area,
-               class_name: "Area",
-               foreign_key: "end_area",
-               optional: true
+    # belongs_to :artist_end_area,
+    #            class_name: "Area",
+    #            foreign_key: "end_area",
+    #            optional: true
 
     belongs_to :artist_type,
                class_name: "ArtistType",
                foreign_key: "type",
                optional: true
 
-    belongs_to :artist_gender,
-               class_name: "Gender",
-               foreign_key: "gender",
-               optional: true
+    # belongs_to :artist_gender,
+    #            class_name: "Gender",
+    #            foreign_key: "gender",
+    #            optional: true
 
     attribute :name
     attribute :sort_name
