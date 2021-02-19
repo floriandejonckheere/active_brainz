@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ActiveBrainz::<%= class_name %> do
+RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   subject(:<%= table_name %>) { build(:<%= table_name %>) }
   <%- if gid? -%>
 
