@@ -20,6 +20,9 @@ require "factory_bot"
 require "ffaker"
 require "timecop"
 
+# Load database configuration
+require_relative "../config/database"
+
 require "active_brainz"
 
 Dir[File.join(__dir__, "support/**/*.rb")].sort.each { |f| require f }

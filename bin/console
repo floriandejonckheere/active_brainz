@@ -2,6 +2,10 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
+
+# Load database configuration
+require_relative "../config/database"
+
 require "active_brainz"
 
 require "irb"
