@@ -18,7 +18,7 @@ module ActiveBrainz
       # "alternative_medium_track",
       # "annotation",
       # "application",
-      # "area_type",
+      "area_type",
       "area",
       # "area_gid_redirect",
       # "area_alias_type",

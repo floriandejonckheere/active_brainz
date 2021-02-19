@@ -5,24 +5,14 @@ module ActiveBrainz
     self.table_name = "artist_type"
 
     include HasGID
+    include HasParentChildren
 
     has_many :artist_type_artists,
              class_name: "Artist",
              foreign_key: "type"
 
-    has_many :artist_type_children,
-             class_name: "ArtistType",
-             foreign_key: "parent"
-
-    belongs_to :artist_type_parent,
-               class_name: "ArtistType",
-               foreign_key: "parent",
-               optional: true
-
     attribute :name
     attribute :description
-
-    attribute :child_order, :integer
   end
 end
 
