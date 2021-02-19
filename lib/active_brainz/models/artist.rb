@@ -48,11 +48,11 @@ module ActiveBrainz
     attribute :last_updated, :datetime
 
     def begin_date
-      @begin_date ||= Date.new(begin_date_year, begin_date_month, begin_date_day)
+      @begin_date ||= Date.new(*[begin_date_year, begin_date_month, begin_date_day].compact)
     end
 
     def end_date
-      @end_date ||= Date.new(end_date_year, end_date_month, end_date_day)
+      @end_date ||= Date.new(*[end_date_year, end_date_month, end_date_day].compact)
     end
   end
 end
