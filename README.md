@@ -48,17 +48,22 @@ The SQL scripts used to create the MusicBrainz database schema can be found on t
 After checking out the repo, run `bin/setup` to install dependencies. 
 Then, run `rake spec` to run the tests. 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-Modify `config/database.yml` to connect to a non-localhost server.
-In Rails applications, Rails' database configuration will take precedence.
+Modify `config/database.rb` or use environment variables to connect to a non-localhost server.
 
 The following rake tasks are available:
 
 ```
-rake active_brainz:schema:dump      # Creates a db/schema.rb file that is portable against any DB supported by Active Record
+rake active_brainz:models:annotate  # Annotate models
 rake active_brainz:models:generate  # Generates models based on db/schema.rb file
+rake active_brainz:models:render    # Generate and annotate models
+rake db:create                      # Creates the database
+rake db:drop                        # Drops the database
+rake db:schema:dump                 # Dumps the database structure to db/schema.rb
+rake db:schema:load                 # Recreates the databases from the schema.rb file
+rake spec                           # Run RSpec code examples
+
 ```
 
-To install this gem onto your local machine, run `bundle exec rake install`. 
 To release a new version, update the version number in `version.rb`, commit it and create a git tag starting with `v`, and push it to the repository.
 Github Actions will automatically run the test suite, build the `.gem` file and push it to [rubygems.org](https://rubygems.org).
 

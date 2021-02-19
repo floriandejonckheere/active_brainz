@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "ended", default: false, null: false
     t.string "comment", limit: 255, default: "", null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "area_idx_name_txt", using: :gin
     t.index ["gid"], name: "area_idx_gid", unique: true
     t.index ["name"], name: "area_idx_name"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "area_check"
@@ -120,8 +119,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "area_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "area_alias_idx_txt_sort", using: :gin
     t.index ["area", "locale"], name: "area_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["area"], name: "area_alias_idx_area"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "area_alias_check"
@@ -227,8 +224,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "begin_area"
     t.integer "end_area"
     t.index "lower((name)::text)", name: "artist_idx_lower_name"
-    t.index "mb_simple_tsvector((name)::text)", name: "artist_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "artist_idx_txt_sort", using: :gin
     t.index ["area"], name: "artist_idx_area"
     t.index ["begin_area"], name: "artist_idx_begin_area"
     t.index ["end_area"], name: "artist_idx_end_area"
@@ -258,8 +253,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "artist_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "artist_alias_idx_txt_sort", using: :gin
     t.index ["artist", "locale"], name: "artist_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["artist"], name: "artist_alias_idx_artist"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "artist_alias_check"
@@ -319,7 +312,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "ref_count", default: 0
     t.datetime "created", default: -> { "now()" }
     t.integer "edits_pending", default: 0, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "artist_credit_idx_txt", using: :gin
     t.index ["name"], name: "artist_credit_idx_musicbrainz_collate"
     t.check_constraint "edits_pending >= 0", name: "artist_credit_edits_pending_check"
   end
@@ -330,7 +322,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "artist", null: false
     t.string "name", null: false
     t.text "join_phrase", default: "", null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "artist_credit_name_idx_txt", using: :gin
     t.index ["artist"], name: "artist_credit_name_idx_artist"
     t.index ["name"], name: "artist_credit_name_idx_musicbrainz_collate"
   end
@@ -736,7 +727,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "editor_language", primary_key: ["editor", "language"], force: :cascade do |t|
     t.integer "editor", null: false
     t.integer "language", null: false
-    t.enum "fluency", null: false
+    t.enum "fluency", null: false, enum_name: "string"
     t.index ["language"], name: "editor_language_idx_language"
   end
 
@@ -750,7 +741,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "scope", default: 0, null: false
     t.datetime "granted", default: -> { "now()" }, null: false
     t.text "code_challenge"
-    t.enum "code_challenge_method"
+    t.enum "code_challenge_method", enum_name: "string"
     t.index ["access_token"], name: "editor_oauth_token_idx_access_token", unique: true
     t.index ["editor"], name: "editor_oauth_token_idx_editor"
     t.index ["refresh_token"], name: "editor_oauth_token_idx_refresh_token", unique: true
@@ -861,7 +852,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "edits_pending", default: 0, null: false
     t.datetime "last_updated", default: -> { "now()" }
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "event_idx_txt", using: :gin
     t.index ["gid"], name: "event_idx_gid", unique: true
     t.index ["name"], name: "event_idx_name"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "event_ended_check"
@@ -884,8 +874,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "event_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "event_alias_idx_txt_sort", using: :gin
     t.index ["event", "locale"], name: "event_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["event"], name: "event_alias_idx_event"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "event_alias_check"
@@ -948,7 +936,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "event_meta", id: :integer, default: nil, force: :cascade do |t|
     t.integer "rating", limit: 2
     t.integer "rating_count"
-    t.enum "event_art_presence", default: "absent", null: false
+    t.enum "event_art_presence", default: "absent", null: false, enum_name: "string"
     t.check_constraint "(rating >= 0) AND (rating <= 100)", name: "event_meta_rating_check"
   end
 
@@ -1028,7 +1016,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "last_updated", default: -> { "now()" }
     t.string "comment", limit: 255, default: "", null: false
     t.text "description", default: "", null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "instrument_idx_txt", using: :gin
     t.index ["gid"], name: "instrument_idx_gid", unique: true
     t.index ["name"], name: "instrument_idx_name"
     t.check_constraint "edits_pending >= 0", name: "instrument_edits_pending_check"
@@ -2362,7 +2349,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "last_updated", default: -> { "now()" }
     t.boolean "ended", default: false, null: false
     t.index "lower((name)::text)", name: "label_idx_lower_name"
-    t.index "mb_simple_tsvector((name)::text)", name: "label_idx_txt", using: :gin
     t.index ["area"], name: "label_idx_area"
     t.index ["gid"], name: "label_idx_gid", unique: true
     t.index ["name", "comment"], name: "label_idx_uniq_name_comment", unique: true, where: "(comment IS NOT NULL)"
@@ -2390,8 +2376,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "label_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "label_alias_idx_txt_sort", using: :gin
     t.index ["label", "locale"], name: "label_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["label"], name: "label_alias_idx_label"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "label_alias_check"
@@ -2679,8 +2663,6 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "medium_index", primary_key: "medium", id: :integer, default: nil, force: :cascade do |t|
-    t.column "toc", nil
-    t.index ["toc"], name: "medium_index_idx", using: :gist
   end
 
   create_table "old_editor_name", id: false, force: :cascade do |t|
@@ -2711,7 +2693,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "ended", default: false, null: false
     t.index "ll_to_earth(coordinates[0], coordinates[1])", name: "place_idx_geo", where: "(coordinates IS NOT NULL)", using: :gist
-    t.index "mb_simple_tsvector((name)::text)", name: "place_idx_name_txt", using: :gin
     t.index ["area"], name: "place_idx_area"
     t.index ["gid"], name: "place_idx_gid", unique: true
     t.index ["name"], name: "place_idx_name"
@@ -2735,8 +2716,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "place_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "place_alias_idx_txt_sort", using: :gin
     t.index ["place", "locale"], name: "place_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["place"], name: "place_alias_idx_place"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "place_alias_check"
@@ -2831,7 +2810,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "edits_pending", default: 0, null: false
     t.datetime "last_updated", default: -> { "now()" }
     t.boolean "video", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "recording_idx_txt", using: :gin
     t.index ["artist_credit"], name: "recording_idx_artist_credit"
     t.index ["gid"], name: "recording_idx_gid", unique: true
     t.index ["name"], name: "recording_idx_musicbrainz_collate"
@@ -2856,8 +2834,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "recording_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "recording_alias_idx_txt_sort", using: :gin
     t.index ["recording", "locale"], name: "recording_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["recording"], name: "recording_alias_idx_recording"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "recording_alias_check"
@@ -2968,7 +2944,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "edits_pending", default: 0, null: false
     t.integer "quality", limit: 2, default: -1, null: false
     t.datetime "last_updated", default: -> { "now()" }
-    t.index "mb_simple_tsvector((name)::text)", name: "release_idx_txt", using: :gin
     t.index ["artist_credit"], name: "release_idx_artist_credit"
     t.index ["gid"], name: "release_idx_gid", unique: true
     t.index ["name"], name: "release_idx_musicbrainz_collate"
@@ -2993,8 +2968,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "release_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "release_alias_idx_txt_sort", using: :gin
     t.index ["release", "locale"], name: "release_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["release"], name: "release_alias_idx_release"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "release_alias_check"
@@ -3080,7 +3053,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "comment", limit: 255, default: "", null: false
     t.integer "edits_pending", default: 0, null: false
     t.datetime "last_updated", default: -> { "now()" }
-    t.index "mb_simple_tsvector((name)::text)", name: "release_group_idx_txt", using: :gin
     t.index ["artist_credit"], name: "release_group_idx_artist_credit"
     t.index ["gid"], name: "release_group_idx_gid", unique: true
     t.index ["name"], name: "release_group_idx_musicbrainz_collate"
@@ -3104,8 +3076,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "release_group_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "release_group_alias_idx_txt_sort", using: :gin
     t.index ["release_group", "locale"], name: "release_group_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["release_group"], name: "release_group_alias_idx_release_group"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "release_group_alias_check"
@@ -3238,7 +3208,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "info_url", limit: 255
     t.string "amazon_asin", limit: 10
     t.string "amazon_store", limit: 20
-    t.enum "cover_art_presence", default: "absent", null: false
+    t.enum "cover_art_presence", default: "absent", null: false, enum_name: "string"
   end
 
   create_table "release_packaging", id: :serial, force: :cascade do |t|
@@ -3317,7 +3287,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "ordering_type", null: false
     t.integer "edits_pending", default: 0, null: false
     t.datetime "last_updated", default: -> { "now()" }
-    t.index "mb_simple_tsvector((name)::text)", name: "series_idx_txt", using: :gin
     t.index ["gid"], name: "series_idx_gid", unique: true
     t.index ["name"], name: "series_idx_name"
     t.check_constraint "edits_pending >= 0", name: "series_edits_pending_check"
@@ -3339,8 +3308,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "series_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "series_alias_idx_txt_sort", using: :gin
     t.index ["series", "locale"], name: "series_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["series"], name: "series_alias_idx_series"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "series_alias_check"
@@ -3440,7 +3407,6 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "tag", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255, null: false
     t.integer "ref_count", default: 0, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "tag_idx_name_txt", using: :gin
     t.index ["name"], name: "tag_idx_name", unique: true
   end
 
@@ -3520,7 +3486,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "comment", limit: 255, default: "", null: false
     t.integer "edits_pending", default: 0, null: false
     t.datetime "last_updated", default: -> { "now()" }
-    t.index "mb_simple_tsvector((name)::text)", name: "work_idx_txt", using: :gin
     t.index ["gid"], name: "work_idx_gid", unique: true
     t.index ["name"], name: "work_idx_musicbrainz_collate"
     t.index ["name"], name: "work_idx_name"
@@ -3543,8 +3508,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "end_date_day", limit: 2
     t.boolean "primary_for_locale", default: false, null: false
     t.boolean "ended", default: false, null: false
-    t.index "mb_simple_tsvector((name)::text)", name: "work_alias_idx_txt", using: :gin
-    t.index "mb_simple_tsvector((sort_name)::text)", name: "work_alias_idx_txt_sort", using: :gin
     t.index ["work", "locale"], name: "work_alias_idx_primary", unique: true, where: "((primary_for_locale = true) AND (locale IS NOT NULL))"
     t.index ["work"], name: "work_alias_idx_work"
     t.check_constraint "(((end_date_year IS NOT NULL) OR (end_date_month IS NOT NULL) OR (end_date_day IS NOT NULL)) AND (ended = true)) OR ((end_date_year IS NULL) AND (end_date_month IS NULL) AND (end_date_day IS NULL))", name: "work_alias_check"
