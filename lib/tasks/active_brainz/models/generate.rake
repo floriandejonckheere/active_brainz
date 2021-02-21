@@ -14,7 +14,7 @@ namespace :active_brainz do
       module ActiveRecord
         class Schema
           def self.define(info = {}, &block)
-            ActiveBrainz::Database.schema = ActiveBrainz::Statements::Schema.new("musicbrainz", info, block)
+            ActiveBrainz::Database.schema = ActiveBrainz::Statements::Schema.new("musicbrainz", info, block, true)
           end
         end
       end
@@ -25,7 +25,8 @@ namespace :active_brainz do
       ActiveBrainz::Database.schema.analyze!
       ActiveBrainz::Database.schema.render!
 
-      puts "Generated #{ActiveBrainz::Database.schema.tables.count} models"
+      tables = ActiveBrainz::Database.schema.tables.values
+      puts "Analyzed #{tables.count} tables, wrote #{tables.count(&:enabled)} models"
     end
   end
 end

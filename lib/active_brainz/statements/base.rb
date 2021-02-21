@@ -5,12 +5,14 @@ module ActiveBrainz
     class Base
       attr_reader :name,
                   :info,
-                  :block
+                  :block,
+                  :enabled
 
-      def initialize(name, info, block)
+      def initialize(name, info, block, enabled)
         @name = name
         @info = info
         @block = block
+        @enabled = enabled
       end
 
       def analyze!

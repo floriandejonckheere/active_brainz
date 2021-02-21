@@ -21,15 +21,15 @@ module ActiveBrainz
     <%- filtered_references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
 
-    has_many :<%= ref.name %>,
-             class_name: "<%= ref.class_name %>",
-             foreign_key: "<%= ref.column %>"
+    <%= ref.enabled ? nil : "# " %>has_many :<%= ref.name %>,
+    <%= ref.enabled ? nil : "# " %>         class_name: "<%= ref.class_name %>",
+    <%= ref.enabled ? nil : "# " %>         foreign_key: "<%= ref.column %>"
     <%- else -%>
 
-    belongs_to :<%= ref.name %>,
-               class_name: "<%= ref.class_name %>",
-               foreign_key: "<%= ref.column %>"<%- if ref.null -%>,
-               optional: true<%- end %>
+    <%= ref.enabled ? nil : "# " %>belongs_to :<%= ref.name %>,
+    <%= ref.enabled ? nil : "# " %>           class_name: "<%= ref.class_name %>",
+    <%= ref.enabled ? nil : "# " %>           foreign_key: "<%= ref.column %>"<%- if ref.null -%>,
+    <%= ref.enabled ? nil : "# " %>           optional: true<%- end %>
     <%- end -%>
     <%- end -%>
     <%- end -%>

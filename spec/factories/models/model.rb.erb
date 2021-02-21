@@ -12,9 +12,9 @@ FactoryBot.define do
 
     <%- filtered_references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
-    <%= ref.name %> { build_list(:<%= ref.to_table %>, 3) }
+    <%= ref.enabled ? nil : "# " %><%= ref.name %> { build_list(:<%= ref.to_table %>, 3) }
     <%- else -%>
-    association :<%= ref.name %>, factory: :<%= ref.to_table %>
+    <%= ref.enabled ? nil : "# " %>association :<%= ref.name %>, factory: :<%= ref.to_table %>
     <%- end -%>
     <%- end -%>
     <%- end -%>

@@ -13,7 +13,7 @@ module ActiveBrainz
         factory: File.read(ActiveBrainz.root.join("spec/factories/models/model.rb.erb")),
       }.freeze
 
-      def initialize(name, info, block)
+      def initialize(name, info, block, enabled)
         super
 
         # Primary key is either defined (primary_key: ...) or serial (id: :serial)
@@ -23,6 +23,8 @@ module ActiveBrainz
       end
 
       def render!
+        return unless enabled
+
         # Render model
         render(TEMPLATES[:model], ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"))
 

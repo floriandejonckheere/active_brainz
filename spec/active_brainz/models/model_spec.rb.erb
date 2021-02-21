@@ -16,12 +16,12 @@ RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
 
   <%- filtered_references.each do |ref| %>
   <%- if ref.type == :has_many -%>
-  it { is_expected.to have_many :<%= ref.name %> }
+  <%= ref.enabled ? nil : "# " %>it { is_expected.to have_many :<%= ref.name %> }
   <%- else -%>
   <%- if ref.null -%>
-  it { is_expected.to belong_to(:<%= ref.name %>).optional }
+  <%= ref.enabled ? nil : "# " %>it { is_expected.to belong_to(:<%= ref.name %>).optional }
   <%- else -%>
-  it { is_expected.to belong_to :<%= ref.name %> }
+  <%= ref.enabled ? nil : "# " %>it { is_expected.to belong_to :<%= ref.name %> }
   <%- end -%>
   <%- end -%>
   <%- end -%>

@@ -6,6 +6,7 @@ module ActiveBrainz
       attr_reader :from_table,
                   :to_table,
                   :type,
+                  :enabled,
                   :options,
                   :column,
                   :name,
@@ -14,10 +15,11 @@ module ActiveBrainz
       # Nullability is only set when table columns are parsed
       attr_accessor :null
 
-      def initialize(from_table, to_table, type, options = {})
+      def initialize(from_table, to_table, type, enabled, options = {})
         @from_table = from_table
         @to_table = to_table
         @type = type
+        @enabled = enabled
         @options = options
 
         @column = options[:column]

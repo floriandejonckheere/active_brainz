@@ -5,7 +5,7 @@ module ActiveBrainz
     class Schema < Base
       attr_reader :tables
 
-      def initialize(name, info, block)
+      def initialize(name, info, block, enabled)
         super
 
         @tables = {}
@@ -26,17 +26,16 @@ module ActiveBrainz
       def enable_extension(_); end
 
       def create_table(name, info = {}, &block)
-        return unless Database::TABLES.include?(name)
-
-        @tables[name] = Table.new(name, info, block)
+        @tables[name] = Table.new(name, info, block, Database::TABLES.include?(name))
       end
 
       def add_foreign_key(from_table, to_table, **options)
-        return unless Database::TABLES.include?(from_table) && Database::TABLES.include?(to_table)
         return if %w(entity0 entity1).include? options[:column]
 
-        tables[from_table].references << Reference.new(from_table, to_table, :belongs_to, options)
-        tables[to_table].references << Reference.new(to_table, from_table, :has_many, options)
+        enabled = tables[from_table].enabled && tables[to_table].enabled
+
+        tables[from_table].references << Reference.new(from_table, to_table, :belongs_to, enabled, options)
+        tables[to_table].references << Reference.new(to_table, from_table, :has_many, enabled, options)
       end
     end
   end
