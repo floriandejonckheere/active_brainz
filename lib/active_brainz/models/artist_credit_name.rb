@@ -17,8 +17,9 @@ module ActiveBrainz
 
     attribute :name
 
-    attribute :join_phrase
     attribute :position, :integer
+
+    attribute :join_phrase
   end
 end
 

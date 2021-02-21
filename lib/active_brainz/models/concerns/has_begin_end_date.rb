@@ -13,6 +13,8 @@ module ActiveBrainz
       attribute :end_date_month, :integer
       attribute :end_date_day, :integer
 
+      attribute :ended, :boolean
+
       def begin_date
         @begin_date ||= Date.new(*[begin_date_year, begin_date_month, begin_date_day].compact)
       end

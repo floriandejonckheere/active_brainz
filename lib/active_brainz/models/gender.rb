@@ -5,23 +5,18 @@ module ActiveBrainz
     self.table_name = "gender"
 
     include HasGID
+    include HasParentChildren
 
-    has_many :gender_artists,
+    has_many :artists,
              class_name: "Artist",
              foreign_key: "gender"
 
-    has_many :gender_children,
-             class_name: "Gender",
-             foreign_key: "parent"
+    # has_many :editors,
+    #          class_name: "Editor",
+    #          foreign_key: "gender"
 
-    belongs_to :gender_parent,
-               class_name: "Gender",
-               foreign_key: "parent",
-               optional: true
-
-    attribute :child_order, :integer
-    attribute :description
     attribute :name
+    attribute :description
   end
 end
 

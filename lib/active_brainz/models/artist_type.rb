@@ -7,7 +7,7 @@ module ActiveBrainz
     include HasGID
     include HasParentChildren
 
-    has_many :artist_type_artists,
+    has_many :artists,
              class_name: "Artist",
              foreign_key: "type"
 

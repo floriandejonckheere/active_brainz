@@ -10,15 +10,15 @@ FactoryBot.define do
     sequence(:child_order)
 
     trait :with_areas do
-      area_type_areas { build_list(:area, 3) }
+      areas { build_list(:area, 3) }
     end
 
     trait :with_parent do
-      area_type_parent { build(:area_type) }
+      parent { build(:area_type) }
     end
 
     trait :with_children do
-      area_type_children { build_list(:area_type, 3) }
+      children { build_list(:area_type, 3) }
     end
   end
 end

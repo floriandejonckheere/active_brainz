@@ -9,5 +9,6 @@ RSpec.describe ActiveBrainz::ArtistCreditName, type: :model do
   it { is_expected.to respond_to :name }
 
   it { is_expected.to respond_to :join_phrase }
+
   it { is_expected.to respond_to :position }
 end

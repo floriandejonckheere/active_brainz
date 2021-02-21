@@ -7,8 +7,8 @@ module ActiveBrainz
     include HasGID
     include HasParentChildren
 
-    has_many :area_type_artists,
-             class_name: "Artist",
+    has_many :areas,
+             class_name: "Area",
              foreign_key: "type"
 
     attribute :name

@@ -3,7 +3,6 @@
 module ActiveBrainz
   class Artist < Base
     self.table_name = "artist"
-    self.inheritance_column = nil
 
     include HasGID
     include HasBeginEndDate
@@ -11,6 +10,11 @@ module ActiveBrainz
     belongs_to :artist_area,
                class_name: "Area",
                foreign_key: "area",
+               optional: true
+
+    belongs_to :artist_type,
+               class_name: "ArtistType",
+               foreign_key: "type",
                optional: true
 
     belongs_to :artist_begin_area,
@@ -23,15 +27,70 @@ module ActiveBrainz
                foreign_key: "end_area",
                optional: true
 
-    belongs_to :artist_type,
-               class_name: "ArtistType",
-               foreign_key: "type",
-               optional: true
-
     belongs_to :artist_gender,
                class_name: "Gender",
                foreign_key: "gender",
                optional: true
+
+    has_many :artist_aliases,
+             class_name: "ArtistAlias",
+             foreign_key: "artist"
+
+    # has_many :artist_annotations,
+    #          class_name: "ArtistAnnotation",
+    #          foreign_key: "artist"
+
+    # has_many :artist_attributes,
+    #          class_name: "ArtistAttribute",
+    #          foreign_key: "artist"
+
+    has_many :artist_credit_names,
+             class_name: "ArtistCreditName",
+             foreign_key: "artist"
+
+    # has_many :artist_ipis,
+    #          class_name: "ArtistIPI",
+    #          foreign_key: "artist"
+
+    # has_many :artist_isnis,
+    #          class_name: "ArtistISNI",
+    #          foreign_key: "artist"
+
+    # has_many :artist_meta,
+    #          class_name: "ArtistMeta",
+    #          foreign_key: "id"
+
+    # has_many :artist_rating_raws,
+    #          class_name: "ArtistRatingRaw",
+    #          foreign_key: "artist"
+
+    # has_many :artist_tag_raws,
+    #          class_name: "ArtistTagRaw",
+    #          foreign_key: "artist"
+
+    # has_many :artist_tags,
+    #          class_name: "ArtistTag",
+    #          foreign_key: "artist"
+
+    # has_many :artist_edit_artists,
+    #          class_name: "EditArtist",
+    #          foreign_key: "artist"
+
+    # has_many :artist_editor_collection_artists,
+    #          class_name: "EditorCollectionArtist",
+    #          foreign_key: "artist"
+
+    # has_many :artist_editor_subscribe_artists,
+    #          class_name: "EditorSubscribeArtist",
+    #          foreign_key: "artist"
+
+    # has_many :artist_editor_watch_artists,
+    #          class_name: "EditorWatchArtist",
+    #          foreign_key: "artist"
+
+    # has_many :artist_new_ids,
+    #          class_name: "ArtistGIDRedirect",
+    #          foreign_key: "new_id"
 
     attribute :name
     attribute :sort_name

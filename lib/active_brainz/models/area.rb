@@ -7,6 +7,31 @@ module ActiveBrainz
     include HasGID
     include HasBeginEndDate
 
+    belongs_to :area_type,
+               class_name: "AreaType",
+               foreign_key: "type",
+               optional: true
+
+    # has_many :area_aliases,
+    #          class_name: "AreaAlias",
+    #          foreign_key: "area"
+
+    # has_many :area_annotations,
+    #          class_name: "AreaAnnotation",
+    #          foreign_key: "area"
+
+    # has_many :area_attributes,
+    #          class_name: "AreaAttribute",
+    #          foreign_key: "area"
+
+    # has_many :area_tag_raws,
+    #          class_name: "AreaTagRaw",
+    #          foreign_key: "area"
+
+    # has_many :area_tags,
+    #          class_name: "AreaTag",
+    #          foreign_key: "area"
+
     has_many :area_artists,
              class_name: "Artist",
              foreign_key: "area"
@@ -19,14 +44,48 @@ module ActiveBrainz
              class_name: "Artist",
              foreign_key: "end_area"
 
-    belongs_to :area_type,
-               class_name: "AreaType",
-               foreign_key: "type",
-               optional: true
+    # has_many :area_country_areas,
+    #          class_name: "CountryArea",
+    #          foreign_key: "area"
+
+    # has_many :area_edit_areas,
+    #          class_name: "EditArea",
+    #          foreign_key: "area"
+
+    # has_many :area_editor_collection_areas,
+    #          class_name: "EditorCollectionArea",
+    #          foreign_key: "area"
+
+    # has_many :area_editors,
+    #          class_name: "Editor",
+    #          foreign_key: "area"
+
+    # has_many :area_iso_3166_1s,
+    #          class_name: "Iso31661",
+    #          foreign_key: "area"
+
+    # has_many :area_iso_3166_2s,
+    #          class_name: "Iso31662",
+    #          foreign_key: "area"
+
+    # has_many :area_iso_3166_3s,
+    #          class_name: "Iso31663",
+    #          foreign_key: "area"
+
+    # has_many :area_labels,
+    #          class_name: "Label",
+    #          foreign_key: "area"
+
+    # has_many :area_new_ids,
+    #          class_name: "AreaGIDRedirect",
+    #          foreign_key: "new_id"
+
+    # has_many :area_places,
+    #          class_name: "Place",
+    #          foreign_key: "area"
 
     attribute :name
     attribute :comment
-    attribute :ended, :boolean
 
     attribute :edits_pending, :integer
     attribute :last_updated, :datetime

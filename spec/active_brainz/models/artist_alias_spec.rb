@@ -14,8 +14,6 @@ RSpec.describe ActiveBrainz::ArtistAlias, type: :model do
   it { is_expected.to respond_to :locale }
   it { is_expected.to respond_to :primary_for_locale }
 
-  it { is_expected.to respond_to :ended }
-
   it { is_expected.to respond_to :edits_pending }
   it { is_expected.to respond_to :last_updated }
 end

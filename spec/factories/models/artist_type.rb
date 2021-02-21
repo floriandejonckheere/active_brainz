@@ -10,15 +10,15 @@ FactoryBot.define do
     sequence(:child_order)
 
     trait :with_artists do
-      artist_type_artists { build_list(:artist, 3) }
+      artists { build_list(:artist, 3) }
     end
 
     trait :with_parent do
-      artist_type_parent { build(:artist_type) }
+      parent { build(:artist_type) }
     end
 
     trait :with_children do
-      artist_type_children { build_list(:artist_type, 3) }
+      children { build_list(:artist_type, 3) }
     end
   end
 end

@@ -3,6 +3,7 @@
 RSpec.shared_examples "it has a begin and end date" do
   it { is_expected.to respond_to :begin_date_year, :begin_date_month, :begin_date_day }
   it { is_expected.to respond_to :end_date_year, :end_date_month, :end_date_day }
+  it { is_expected.to respond_to :ended }
 
   describe "#begin_date" do
     it "returns a complete date" do

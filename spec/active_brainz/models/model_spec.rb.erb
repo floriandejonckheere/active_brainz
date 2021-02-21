@@ -14,7 +14,7 @@ RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   <%- end -%>
   <%- if filtered_references.any? -%>
 
-  <%- filtered_references.each do |ref| %>
+  <%- filtered_references.each do |ref| -%>
   <%- if ref.type == :has_many -%>
   <%= ref.enabled ? nil : "# " %>it { is_expected.to have_many :<%= ref.name %> }
   <%- else -%>

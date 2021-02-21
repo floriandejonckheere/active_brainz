@@ -22,8 +22,6 @@ module ActiveBrainz
     attribute :locale
     attribute :primary_for_locale, :boolean
 
-    attribute :ended, :boolean
-
     attribute :edits_pending, :integer
     attribute :last_updated, :datetime
   end
