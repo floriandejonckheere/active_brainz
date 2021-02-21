@@ -6,12 +6,11 @@ FactoryBot.define do
     sequence(:<%= key %>)
     <%- end -%>
     <%- if gid? -%>
-
     gid { FFaker::Guid.guid }
     <%- end -%>
-    <%- if references.any? -%>
+    <%- if filtered_references.any? -%>
 
-    <%- references.each do |ref| -%>
+    <%- filtered_references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
     <%= ref.name %> { build_list(:<%= ref.to_table %>, 3) }
     <%- else -%>
@@ -44,6 +43,18 @@ FactoryBot.define do
 
     ended { end_date.present? }
     <%- end -%>
+    <%- end -%>
+    <%- if child_order? -%>
+
+    sequence(:child_order)
+
+    trait :with_parent do
+      <%= table_name %>_parent { build(:<%= table_name %>) }
+    end
+
+    trait :with_children do
+      <%= table_name %>_children { build_list(:<%= table_name %>, 3) }
+    end
     <%- end -%>
   end
 end

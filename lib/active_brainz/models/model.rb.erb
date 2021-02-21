@@ -13,7 +13,12 @@ module ActiveBrainz
     <%- if begin_end_date? %>
     include HasBeginEndDate
     <%- end -%>
-    <%- references.each do |ref| -%>
+    <%- if child_order? -%>
+    include HasParentChildren
+    <%- end -%>
+    <%- if filtered_references.any? -%>
+
+    <%- filtered_references.each do |ref| -%>
     <%- if ref.type == :has_many -%>
 
     has_many :<%= ref.name %>,
@@ -27,7 +32,8 @@ module ActiveBrainz
                optional: true<%- end %>
     <%- end -%>
     <%- end -%>
-    <%- if attributes.any? -%>
+    <%- end -%>
+    <%- if filtered_attributes.any? -%>
 
     <%- filtered_attributes.each do |attr| -%>
     attribute :<%= attr.name %><% if [:string, :text].exclude?(attr.type) %>, :<%= attr.type %><% end %>

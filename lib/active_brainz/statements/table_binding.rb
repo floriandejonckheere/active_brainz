@@ -13,6 +13,11 @@ module ActiveBrainz
         end_date_month
         end_date_day
         gid
+        child_order
+      ).freeze
+
+      FILTERED_REFERENCES = %w(
+        parent
       ).freeze
 
       def render_binding
@@ -36,8 +41,16 @@ module ActiveBrainz
           .all? { |name| attributes.any? { |attribute| attribute.name == name } }
       end
 
+      def child_order?
+        attributes.any? { |attribute| attribute.name == "child_order" }
+      end
+
       def filtered_attributes
         attributes.reject { |attr| FILTERED_ATTRIBUTES.include? attr.name }
+      end
+
+      def filtered_references
+        references.reject { |ref| FILTERED_REFERENCES.include? ref.column }
       end
     end
   end

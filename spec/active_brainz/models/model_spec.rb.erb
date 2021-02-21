@@ -3,14 +3,18 @@
 RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   subject(:<%= table_name %>) { build(:<%= table_name %>) }
   <%- if gid? -%>
+
   it_behaves_like "it has a GID"
   <%- end -%>
   <%- if begin_end_date? -%>
   it_behaves_like "it has a begin and end date"
   <%- end -%>
-  <%- if references.any? -%>
+  <%- if child_order? -%>
+  it_behaves_like "it has a parent and children"
+  <%- end -%>
+  <%- if filtered_references.any? -%>
 
-  <%- references.each do |ref| %>
+  <%- filtered_references.each do |ref| %>
   <%- if ref.type == :has_many -%>
   it { is_expected.to have_many :<%= ref.name %> }
   <%- else -%>
@@ -22,7 +26,7 @@ RSpec.describe ActiveBrainz::<%= class_name %>, type: :model do
   <%- end -%>
   <%- end -%>
   <%- end -%>
-  <%- if attributes.any? -%>
+  <%- if filtered_attributes.any? -%>
 
   <%- filtered_attributes.each do |attr| -%>
   it { is_expected.to respond_to :<%= attr.name %> }
