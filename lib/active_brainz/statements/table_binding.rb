@@ -12,6 +12,7 @@ module ActiveBrainz
         end_date_year
         end_date_month
         end_date_day
+        ended
         gid
         child_order
       ).freeze
@@ -37,7 +38,7 @@ module ActiveBrainz
       end
 
       def begin_end_date?
-        %w(begin_date_year begin_date_month begin_date_day end_date_year end_date_month end_date_day)
+        %w(begin_date_year begin_date_month begin_date_day end_date_year end_date_month end_date_day ended)
           .all? { |name| attributes.any? { |attribute| attribute.name == name } }
       end
 
