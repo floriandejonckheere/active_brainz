@@ -10,7 +10,7 @@ module ActiveBrainz
     establish_connection :musicbrainz
 
     def readonly?
-      true
+      ENV["ACTIVE_BRAINZ_ENV"] != "test"
     end
   end
 end

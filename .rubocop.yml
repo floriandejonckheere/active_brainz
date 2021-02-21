@@ -22,6 +22,9 @@ Lint/AssignmentInCondition:
 Lint/SafeNavigationWithEmpty:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 25
+
 Metrics/BlockLength:
   Max: 35
   Exclude:
