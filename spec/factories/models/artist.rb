@@ -7,7 +7,7 @@ FactoryBot.define do
     association :artist_end_area, factory: :area
 
     association :artist_type, factory: :artist_type
-    # association :artist_gender, factory: :gender
+    association :artist_gender, factory: :gender
 
     gid { FFaker::Guid.guid }
     name { FFaker::Name.name }

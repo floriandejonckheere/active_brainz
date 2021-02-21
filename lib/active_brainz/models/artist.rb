@@ -28,10 +28,10 @@ module ActiveBrainz
                foreign_key: "type",
                optional: true
 
-    # belongs_to :artist_gender,
-    #            class_name: "Gender",
-    #            foreign_key: "gender",
-    #            optional: true
+    belongs_to :artist_gender,
+               class_name: "Gender",
+               foreign_key: "gender",
+               optional: true
 
     attribute :name
     attribute :sort_name
