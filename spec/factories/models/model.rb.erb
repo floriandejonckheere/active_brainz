@@ -49,11 +49,11 @@ FactoryBot.define do
     sequence(:child_order)
 
     trait :with_parent do
-      <%= table_name %>_parent { build(:<%= table_name %>) }
+      parent { build(:<%= table_name %>) }
     end
 
     trait :with_children do
-      <%= table_name %>_children { build_list(:<%= table_name %>, 3) }
+      children { build_list(:<%= table_name %>, 3) }
     end
     <%- end -%>
   end
