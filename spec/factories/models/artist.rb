@@ -29,7 +29,7 @@ FactoryBot.define do
     end_date_month { end_date&.month }
     end_date_day { end_date&.day }
 
-    ended { end_date.nil? }
+    ended { end_date.present? }
 
     comment { FFaker::Lorem.sentence }
     edits_pending { FFaker::Random.rand(0..10) }
