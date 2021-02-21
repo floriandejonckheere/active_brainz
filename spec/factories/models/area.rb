@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :area, class: "ActiveBrainz::Area" do
     gid { FFaker::Guid.guid }
 
-    # association :area_type
+    association :area_type
 
     name { FFaker::Lorem.word }
     comment { FFaker::Lorem.word }

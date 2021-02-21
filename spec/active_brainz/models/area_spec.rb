@@ -9,7 +9,7 @@ RSpec.describe ActiveBrainz::Area, type: :model do
   it { is_expected.to have_many :area_artists }
   it { is_expected.to have_many :begin_area_artists }
   it { is_expected.to have_many :end_area_artists }
-  # it { is_expected.to belong_to(:area_type).optional }
+  it { is_expected.to belong_to(:area_type).optional }
 
   it { is_expected.to respond_to :name }
   it { is_expected.to respond_to :comment }

@@ -19,10 +19,10 @@ module ActiveBrainz
              class_name: "Artist",
              foreign_key: "end_area"
 
-    # belongs_to :area_type,
-    #            class_name: "AreaType",
-    #            foreign_key: "type",
-    #            optional: true
+    belongs_to :area_type,
+               class_name: "AreaType",
+               foreign_key: "type",
+               optional: true
 
     attribute :name
     attribute :comment
