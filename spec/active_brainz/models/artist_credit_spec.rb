@@ -9,7 +9,7 @@ RSpec.describe ActiveBrainz::ArtistCredit, type: :model do
   # it { is_expected.to have_many :recordings }
   it { is_expected.to have_many :release_groups }
   it { is_expected.to have_many :releases }
-  # it { is_expected.to have_many :tracks }
+  it { is_expected.to have_many :tracks }
 
   it { is_expected.to respond_to :name }
 

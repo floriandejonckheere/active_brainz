@@ -318,7 +318,7 @@ module ActiveBrainz
       # "series_tag_raw",
       # "tag",
       # "tag_relation",
-      # "track",
+      "track",
       # "track_gid_redirect",
       # "track_raw",
       # "medium_index",

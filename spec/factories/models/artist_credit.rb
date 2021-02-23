@@ -34,8 +34,8 @@ FactoryBot.define do
       releases { build_list(:release, 3) }
     end
 
-    # trait :with_tracks do
-    #   tracks { build_list(:track, 3) }
-    # end
+    trait :with_tracks do
+      tracks { build_list(:track, 3) }
+    end
   end
 end
