@@ -6,7 +6,7 @@ FactoryBot.define do
 
     association :track_artist_credit, factory: :artist_credit
     # association :track_medium, factory: :medium
-    # association :track_recording, factory: :recording
+    association :track_recording, factory: :recording
 
     name { FFaker::Name.name }
     sequence(:number)

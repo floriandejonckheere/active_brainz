@@ -258,7 +258,7 @@ module ActiveBrainz
       # "place_tag_raw",
       # "place_type",
       # "replication_control",
-      # "recording",
+      "recording",
       # "recording_alias_type",
       # "recording_alias",
       # "recording_rating_raw",

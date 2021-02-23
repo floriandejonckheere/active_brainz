@@ -16,10 +16,10 @@ module ActiveBrainz
     #            foreign_key: "medium",
     #            optional: true
 
-    # belongs_to :track_recording,
-    #            class_name: "Recording",
-    #            foreign_key: "recording",
-    #            optional: true
+    belongs_to :track_recording,
+               class_name: "Recording",
+               foreign_key: "recording",
+               optional: true
 
     # has_many :alternative_medium_tracks,
     #          class_name: "AlternativeMediumTrack",
