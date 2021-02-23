@@ -64,8 +64,10 @@ rake spec                           # Run RSpec code examples
 
 ```
 
-To release a new version, update the version number in `version.rb`, commit it and create a git tag starting with `v`, and push it to the repository.
+To release a new version, update the version number in `lib/active_brainz/version.rb`, commit it and create a git tag starting with `v`, and push it to the repository.
 Github Actions will automatically run the test suite, build the `.gem` file and push it to [rubygems.org](https://rubygems.org).
+
+If MusicBrainz' database schema version gets bumped, don't forget to bump the schema version in `lib/active_brainz/version.rb` as well.
 
 ## Contributing
 
