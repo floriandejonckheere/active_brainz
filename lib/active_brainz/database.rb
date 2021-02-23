@@ -270,7 +270,7 @@ module ActiveBrainz
       # "recording_meta",
       # "recording_gid_redirect",
       # "recording_tag",
-      # "release",
+      "release",
       # "release_alias_type",
       # "release_alias",
       # "release_country",

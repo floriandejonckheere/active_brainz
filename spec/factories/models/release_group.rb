@@ -57,8 +57,8 @@ FactoryBot.define do
     #   release_group_tags { build_list(:release_group_tag, 3) }
     # end
 
-    # trait :with_releases do
-    #   releases { build_list(:release, 3) }
-    # end
+    trait :with_releases do
+      releases { build_list(:release, 3) }
+    end
   end
 end

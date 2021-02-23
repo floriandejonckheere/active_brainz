@@ -18,7 +18,7 @@ RSpec.describe ActiveBrainz::ReleaseGroup, type: :model do
   # it { is_expected.to have_many :release_group_secondary_type_joins }
   # it { is_expected.to have_many :release_group_tag_raws }
   # it { is_expected.to have_many :release_group_tags }
-  # it { is_expected.to have_many :releases }
+  it { is_expected.to have_many :releases }
 
   it { is_expected.to respond_to :name }
   it { is_expected.to respond_to :comment }

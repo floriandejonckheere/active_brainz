@@ -60,9 +60,9 @@ module ActiveBrainz
     #          class_name: "ReleaseGroupTag",
     #          foreign_key: "release_group"
 
-    # has_many :releases,
-    #          class_name: "Release",
-    #          foreign_key: "release_group"
+    has_many :releases,
+             class_name: "Release",
+             foreign_key: "release_group"
 
     attribute :name
     attribute :comment

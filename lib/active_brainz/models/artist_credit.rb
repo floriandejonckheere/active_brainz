@@ -24,9 +24,9 @@ module ActiveBrainz
              class_name: "ReleaseGroup",
              foreign_key: "artist_credit"
 
-    # has_many :releases,
-    #          class_name: "Release",
-    #          foreign_key: "artist_credit"
+    has_many :releases,
+             class_name: "Release",
+             foreign_key: "artist_credit"
 
     # has_many :tracks,
     #          class_name: "Track",

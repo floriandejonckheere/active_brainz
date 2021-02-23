@@ -30,9 +30,9 @@ FactoryBot.define do
       release_groups { build_list(:release_group, 3) }
     end
 
-    # trait :with_releases do
-    #   releases { build_list(:release, 3) }
-    # end
+    trait :with_releases do
+      releases { build_list(:release, 3) }
+    end
 
     # trait :with_tracks do
     #   tracks { build_list(:track, 3) }
