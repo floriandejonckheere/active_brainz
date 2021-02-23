@@ -26,9 +26,9 @@ FactoryBot.define do
     #   recordings { build_list(:recording, 3) }
     # end
 
-    # trait :with_release_groups do
-    #   release_groups { build_list(:release_group, 3) }
-    # end
+    trait :with_release_groups do
+      release_groups { build_list(:release_group, 3) }
+    end
 
     # trait :with_releases do
     #   releases { build_list(:release, 3) }

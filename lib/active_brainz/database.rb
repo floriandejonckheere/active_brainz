@@ -288,7 +288,7 @@ module ActiveBrainz
       # "release_packaging",
       # "release_status",
       # "release_tag",
-      # "release_group",
+      "release_group",
       # "release_group_alias_type",
       # "release_group_alias",
       # "release_group_rating_raw",

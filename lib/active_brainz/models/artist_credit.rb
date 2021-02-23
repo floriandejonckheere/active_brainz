@@ -20,9 +20,9 @@ module ActiveBrainz
     #          class_name: "Recording",
     #          foreign_key: "artist_credit"
 
-    # has_many :release_groups,
-    #          class_name: "ReleaseGroup",
-    #          foreign_key: "artist_credit"
+    has_many :release_groups,
+             class_name: "ReleaseGroup",
+             foreign_key: "artist_credit"
 
     # has_many :releases,
     #          class_name: "Release",
