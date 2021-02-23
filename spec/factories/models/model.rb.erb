@@ -17,7 +17,7 @@ FactoryBot.define do
     <%- if filtered_attributes.any? -%>
 
     <%- filtered_attributes.each do |attr| -%>
-    <%= attr.name %> { FFaker::Lorem.word }
+    <%= attr.name %> { <%= attr.ffaked_value %> }
     <%- end -%>
     <%- if begin_end_date? %>
 

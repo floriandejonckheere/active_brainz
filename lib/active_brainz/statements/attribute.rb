@@ -16,6 +16,23 @@ module ActiveBrainz
       def to_s
         "#{name} (#{type})"
       end
+
+      # Fake value used in factory
+      def ffaked_value
+        {
+          name: "FFaker::Name.name",
+          description: "FFaker::Lorem.sentence",
+          comment: "FFaker::Lorem.sentence",
+          edits_pending: "FFaker::Random.rand(10)",
+          ref_count: "FFaker::Random.rand(10)",
+          locale: "FFaker::Locale.code",
+        }.fetch(name.to_sym, {
+          integer: "FFaker::Random.rand(10)",
+          datetime: "FFaker::Time.datetime",
+          date: "FFaker::Time.date",
+          boolean: "[true, false].sample",
+        }.fetch(type, "FFaker::Lorem.word"),)
+      end
     end
   end
 end
