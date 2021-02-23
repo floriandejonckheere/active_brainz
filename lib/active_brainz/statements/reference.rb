@@ -28,10 +28,14 @@ module ActiveBrainz
       end
 
       def generate_name
-        name = column
-        name = to_table if ["id", "type", from_table].include? name
+        # References are always named after their target tables,
+        # pluralized for has_many references and prefixed with the
+        # origin table name for belongs_to references.
+        name = to_table
         name = name.pluralize if type == :has_many
-        "#{from_table}_#{name}"
+        name = "#{from_table}_#{name}" if name == column
+
+        name
       end
 
       def to_s
