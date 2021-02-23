@@ -10,12 +10,8 @@ FactoryBot.define do
     <%- end -%>
     <%- if filtered_references.any? -%>
 
-    <%- filtered_references.each do |ref| -%>
-    <%- if ref.type == :has_many -%>
-    <%= ref.enabled ? nil : "# " %><%= ref.name %> { build_list(:<%= ref.to_table %>, 3) }
-    <%- else -%>
+    <%- filtered_references.select { |ref| ref.type == :belongs_to }.each do |ref| -%>
     <%= ref.enabled ? nil : "# " %>association :<%= ref.name %>, factory: :<%= ref.to_table %>
-    <%- end -%>
     <%- end -%>
     <%- end -%>
     <%- if filtered_attributes.any? -%>
@@ -47,6 +43,13 @@ FactoryBot.define do
     <%- if child_order? -%>
 
     sequence(:child_order)
+    <%- end -%>
+    <%- filtered_references.select { |ref| ref.type == :has_many }.each do |ref| %>
+    <%= ref.enabled ? nil : "# " %>trait :with_<%= ref.to_table.pluralize %> do
+    <%= ref.enabled ? nil : "# " %>  <%= ref.name %> { build_list(:<%= ref.to_table %>, 3) }
+    <%= ref.enabled ? nil : "# " %>end
+    <%- end -%>
+    <%- if child_order? -%>
 
     trait :with_parent do
       parent { build(:<%= table_name %>) }
