@@ -6,7 +6,7 @@ RSpec.describe ActiveBrainz::Track, type: :model do
   it_behaves_like "it has a GID"
 
   it { is_expected.to belong_to(:track_artist_credit).optional }
-  # it { is_expected.to belong_to(:track_medium).optional }
+  it { is_expected.to belong_to(:track_medium).optional }
   it { is_expected.to belong_to(:track_recording).optional }
   # it { is_expected.to have_many :alternative_medium_tracks }
   # it { is_expected.to have_many :track_gid_redirects }

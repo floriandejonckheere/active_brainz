@@ -48,9 +48,9 @@ module ActiveBrainz
     #          class_name: "EditorCollectionRelease",
     #          foreign_key: "release"
 
-    # has_many :media,
-    #          class_name: "Medium",
-    #          foreign_key: "release"
+    has_many :media,
+             class_name: "Medium",
+             foreign_key: "release"
 
     # has_many :release_aliases,
     #          class_name: "ReleaseAlias",

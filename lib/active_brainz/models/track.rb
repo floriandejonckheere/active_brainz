@@ -11,10 +11,10 @@ module ActiveBrainz
                foreign_key: "artist_credit",
                optional: true
 
-    # belongs_to :track_medium,
-    #            class_name: "Medium",
-    #            foreign_key: "medium",
-    #            optional: true
+    belongs_to :track_medium,
+               class_name: "Medium",
+               foreign_key: "medium",
+               optional: true
 
     belongs_to :track_recording,
                class_name: "Recording",

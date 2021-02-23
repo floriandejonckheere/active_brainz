@@ -14,7 +14,7 @@ RSpec.describe ActiveBrainz::Release, type: :model do
   # it { is_expected.to have_many :alternative_releases }
   # it { is_expected.to have_many :edit_releases }
   # it { is_expected.to have_many :editor_collection_releases }
-  # it { is_expected.to have_many :media }
+  it { is_expected.to have_many :media }
   # it { is_expected.to have_many :release_aliases }
   # it { is_expected.to have_many :release_annotations }
   # it { is_expected.to have_many :release_attributes }

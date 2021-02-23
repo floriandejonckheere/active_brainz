@@ -237,7 +237,7 @@ module ActiveBrainz
       # "editor_watch_artist",
       # "editor_watch_release_group_type",
       # "editor_watch_release_status",
-      # "medium",
+      "medium",
       # "medium_attribute_type",
       # "medium_attribute_type_allowed_format",
       # "medium_attribute_type_allowed_value",

@@ -5,7 +5,7 @@ FactoryBot.define do
     gid { FFaker::Guid.guid }
 
     association :track_artist_credit, factory: :artist_credit
-    # association :track_medium, factory: :medium
+    association :track_medium, factory: :medium
     association :track_recording, factory: :recording
 
     name { FFaker::Name.name }

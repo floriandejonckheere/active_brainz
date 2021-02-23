@@ -32,9 +32,9 @@ FactoryBot.define do
     #   editor_collection_releases { build_list(:editor_collection_release, 3) }
     # end
 
-    # trait :with_media do
-    #   media { build_list(:medium, 3) }
-    # end
+    trait :with_media do
+      media { build_list(:medium, 3) }
+    end
 
     # trait :with_release_aliases do
     #   release_aliases { build_list(:release_alias, 3) }
