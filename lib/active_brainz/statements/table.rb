@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "erb"
+require "fileutils"
 
 module ActiveBrainz
   module Statements
@@ -73,7 +74,7 @@ module ActiveBrainz
       def render(template, path, file)
         return if File.exist?(File.join(path, file))
 
-        File.mkdir_p path unless Dir.exist?(path)
+        FileUtils.mkdir_p path unless Dir.exist?(path)
 
         output = ERB.new(template, trim_mode: "-").result(TableBinding.new(self).render_binding)
         File.write File.join(path, file), output
