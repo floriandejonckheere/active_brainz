@@ -72,9 +72,9 @@ module ActiveBrainz
     #          class_name: "Iso31663",
     #          foreign_key: "area"
 
-    # has_many :area_labels,
-    #          class_name: "Label",
-    #          foreign_key: "area"
+    has_many :area_labels,
+             class_name: "Label",
+             foreign_key: "area"
 
     # has_many :area_new_ids,
     #          class_name: "AreaGIDRedirect",

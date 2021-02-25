@@ -94,9 +94,9 @@ FactoryBot.define do
     #   iso_3166_3s { build_list(:iso_3166_3, 3) }
     # end
 
-    # trait :with_labels do
-    #   labels { build_list(:label, 3) }
-    # end
+    trait :with_labels do
+      labels { build_list(:label, 3) }
+    end
 
     # trait :with_places do
     #   places { build_list(:place, 3) }
