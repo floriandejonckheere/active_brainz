@@ -21,6 +21,17 @@ module ActiveBrainz
         parent
       ).freeze
 
+      ATTRIBUTE_SORT_ORDER = %w(
+        name
+        sort_name
+        description
+        comment
+        locale
+        primary_for_locale
+        edits_pending
+        last_updated
+      ).freeze
+
       def render_binding
         binding
       end
@@ -49,7 +60,7 @@ module ActiveBrainz
       def filtered_attributes
         attributes
           .reject { |attr| FILTERED_ATTRIBUTES.include? attr.name }
-          .sort_by { |ref| [ref.type, ref.name] }
+          .sort_by { |ref| [ATTRIBUTE_SORT_ORDER.index(ref.name) || 99, ref.type, ref.name] }
       end
 
       def filtered_references
