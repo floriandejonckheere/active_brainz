@@ -30,6 +30,9 @@ namespace :active_brainz do
       module AnnotateModels
         def self.get_loaded_model(model_path, file)
           "active_brainz/#{model_path}".camelize.constantize
+        rescue NameError
+          # Strip namespace
+          "active_brainz/#{model_path.gsub(%r(^[^/]*/), '')}".camelize.constantize
         rescue LoadError
           super
         end

@@ -25,14 +25,17 @@ module ActiveBrainz
       def render!
         return unless enabled
 
+        # label_alias_type => label
+        namespace = name.split("_").first
+
         # Render model
-        render(TEMPLATES[:model], ActiveBrainz.root.join("lib/active_brainz/models/#{name}.rb"))
+        render(TEMPLATES[:model], ActiveBrainz.root.join("lib/active_brainz/models", namespace), "#{name}.rb")
 
         # Render spec
-        render(TEMPLATES[:spec], ActiveBrainz.root.join("spec/active_brainz/models/#{name}_spec.rb"))
+        render(TEMPLATES[:spec], ActiveBrainz.root.join("spec/active_brainz/models/", namespace), "#{name}_spec.rb")
 
         # Render factory
-        render(TEMPLATES[:factory], ActiveBrainz.root.join("spec/factories/models/#{name}.rb"))
+        render(TEMPLATES[:factory], ActiveBrainz.root.join("spec/factories/models/", namespace), "#{name}.rb")
       end
 
       def attribute(name, **options)
@@ -67,11 +70,13 @@ module ActiveBrainz
 
       private
 
-      def render(template, filename)
-        return if File.exist?(filename)
+      def render(template, path, file)
+        return if File.exist?(File.join(path, file))
+
+        File.mkdir_p path unless Dir.exist?(path)
 
         output = ERB.new(template, trim_mode: "-").result(TableBinding.new(self).render_binding)
-        File.write filename, output
+        File.write File.join(path, file), output
       end
     end
   end

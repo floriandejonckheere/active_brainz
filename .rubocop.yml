@@ -36,7 +36,7 @@ Metrics/MethodLength:
 
 RSpec/FilePath:
   Exclude:
-    - spec/active_brainz/models/*_spec.rb
+    - spec/active_brainz/models/**/*_spec.rb
 
 Style/Documentation:
   Enabled: false
