@@ -70,10 +70,6 @@ module ActiveBrainz
       def render(template, filename)
         return if File.exist?(filename)
 
-        # Sort attributes and references
-        attributes.sort_by!(&:name)
-        references.sort_by! { |ref| [ref.type, ref.name] }
-
         output = ERB.new(template, trim_mode: "-").result(TableBinding.new(self).render_binding)
         File.write filename, output
       end

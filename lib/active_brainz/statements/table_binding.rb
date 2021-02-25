@@ -47,11 +47,15 @@ module ActiveBrainz
       end
 
       def filtered_attributes
-        attributes.reject { |attr| FILTERED_ATTRIBUTES.include? attr.name }
+        attributes
+          .reject { |attr| FILTERED_ATTRIBUTES.include? attr.name }
+          .sort_by { |ref| [ref.type, ref.name] }
       end
 
       def filtered_references
-        references.reject { |ref| FILTERED_REFERENCES.include? ref.column }
+        references
+          .reject { |ref| FILTERED_REFERENCES.include? ref.column }
+          .sort_by(&:name)
       end
     end
   end
