@@ -9,7 +9,7 @@ FactoryBot.define do
 
     name { FFaker::Name.name }
     comment { FFaker::Lorem.sentence }
-    label_code { FFaker::Random.rand(10) }
+    label_code { FFaker::Random.rand(1..99_999) }
 
     edits_pending { FFaker::Random.rand(10) }
     last_updated { FFaker::Time.datetime }
