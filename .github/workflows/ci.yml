@@ -83,11 +83,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build and push to RubyGems
-        uses: dawidd6/action-publish-gem@v1
+      - name: Set version
+        run: |
+          echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: Publish to RubyGems
+        run: |
+          mkdir -p ~/.gem
+          touch ~/.gem/credentials
+          chmod 0600 ~/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > ~/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          api_key: ${{secrets.RUBYGEMS_API_KEY}}
+          GEM_HOST_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
 
       - name: Create Github Release
         uses: actions/create-release@v1
