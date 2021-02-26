@@ -31,6 +31,7 @@ module ActiveBrainz
           datetime: "FFaker::Time.datetime",
           date: "FFaker::Time.date",
           boolean: "[true, false].sample",
+          point: "[FFaker::Geolocation.lat, FFaker::GeoLocation.lng]",
         }.fetch(type, "FFaker::Lorem.word"),)
       end
     end

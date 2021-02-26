@@ -11,7 +11,7 @@ FactoryBot.define do
     comment { FFaker::Lorem.sentence }
 
     address { FFaker::Lorem.word }
-    coordinates { FFaker::Random.rand(100) }
+    coordinates { [FFaker::Geolocation.lat, FFaker::Geolocation.lng] }
 
     edits_pending { FFaker::Random.rand(10) }
     last_updated { FFaker::Time.datetime }
