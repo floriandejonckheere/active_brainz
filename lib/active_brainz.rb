@@ -26,6 +26,11 @@ module ActiveBrainz
       loader.collapse(root.join("lib/active_brainz/models"))
       loader.collapse(root.join("lib/active_brainz/models/*"))
 
+      # Do not eager load models, because they will try and connect to the database
+      # This fails in Rails apps, because gems are loaded before the configuration
+      # is initialized.
+      loader.do_not_eager_load(root.join("lib/active_brainz/models"))
+
       loader.setup
       loader.eager_load
 
