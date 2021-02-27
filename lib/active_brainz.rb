@@ -21,8 +21,10 @@ module ActiveBrainz
 
       # Set up code loader
       loader.enable_reloading if ENV["ACTIVE_BRAINZ_ENV"] == "development"
-      loader.collapse("lib/active_brainz/models")
-      loader.collapse("lib/active_brainz/models/*")
+
+      loader.collapse(root.join("lib/active_brainz/concerns"))
+      loader.collapse(root.join("lib/active_brainz/models"))
+      loader.collapse(root.join("lib/active_brainz/models/*"))
 
       loader.setup
       loader.eager_load
