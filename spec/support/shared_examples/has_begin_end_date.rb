@@ -23,6 +23,12 @@ RSpec.shared_examples "it has a begin and end date" do
 
       expect(model.begin_date).to eq Date.new(1992, 1, 1)
     end
+
+    it "returns nil" do
+      model = build(model_name, begin_date_year: nil, begin_date_month: nil, begin_date_day: nil)
+
+      expect(model.begin_date).to be_nil
+    end
   end
 
   describe "#end_date" do
@@ -42,6 +48,12 @@ RSpec.shared_examples "it has a begin and end date" do
       model = build(model_name, end_date_year: 1992, end_date_month: nil, end_date_day: nil)
 
       expect(model.end_date).to eq Date.new(1992, 1, 1)
+    end
+
+    it "returns nil" do
+      model = build(model_name, end_date_year: nil, end_date_month: nil, end_date_day: nil)
+
+      expect(model.end_date).to be_nil
     end
   end
 
