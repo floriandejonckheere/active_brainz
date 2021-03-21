@@ -10,6 +10,6 @@ ActiveRecord::Base.configurations = {
     host: ENV.fetch("PG_HOST", "localhost"),
     username: ENV.fetch("PG_USER", "musicbrainz"),
     password: ENV.fetch("PG_PASSWORD", "musicbrainz"),
-    database: ENV.fetch("PG_DATABASE", "musicbrainz_db"),
+    database: ENV.fetch("PG_DATABASE", "musicbrainz_sample"),
   },
 }
