@@ -19,9 +19,9 @@ RSpec.describe ActiveBrainz::Area, type: :model do
   # it { is_expected.to have_many :area_edit_areas }
   # it { is_expected.to have_many :area_editor_collection_areas }
   # it { is_expected.to have_many :area_editors }
-  # it { is_expected.to have_many :area_iso_3166_1s }
-  # it { is_expected.to have_many :area_iso_3166_2s }
-  # it { is_expected.to have_many :area_iso_3166_3s }
+  it { is_expected.to have_one :area_iso_3166_1 }
+  it { is_expected.to have_one :area_iso_3166_2 }
+  it { is_expected.to have_one :area_iso_3166_3 }
   it { is_expected.to have_many :area_labels }
   # it { is_expected.to have_many :area_new_ids }
   # it { is_expected.to have_many :area_places }

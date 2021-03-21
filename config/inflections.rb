@@ -6,4 +6,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.acronym "GID"
   inflect.acronym "IPI"
   inflect.acronym "ISNI"
+  inflect.acronym "ISO"
 end

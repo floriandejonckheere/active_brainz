@@ -60,17 +60,17 @@ module ActiveBrainz
     #          class_name: "Editor",
     #          foreign_key: "area"
 
-    # has_many :area_iso_3166_1s,
-    #          class_name: "Iso31661",
-    #          foreign_key: "area"
+    has_one :area_iso_3166_1,
+            class_name: "ISO31661",
+            foreign_key: "area"
 
-    # has_many :area_iso_3166_2s,
-    #          class_name: "Iso31662",
-    #          foreign_key: "area"
+    has_one :area_iso_3166_2,
+            class_name: "ISO31662",
+            foreign_key: "area"
 
-    # has_many :area_iso_3166_3s,
-    #          class_name: "Iso31663",
-    #          foreign_key: "area"
+    has_one :area_iso_3166_3,
+            class_name: "ISO31663",
+            foreign_key: "area"
 
     has_many :area_labels,
              class_name: "Label",

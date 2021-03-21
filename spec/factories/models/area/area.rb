@@ -6,6 +6,10 @@ FactoryBot.define do
 
     association :area_type, factory: :area_type
 
+    association :area_iso_3166_1, factory: :iso_3166_1
+    association :area_iso_3166_2, factory: :iso_3166_2
+    association :area_iso_3166_3, factory: :iso_3166_3
+
     name { FFaker::Name.name }
     comment { FFaker::Lorem.sentence }
 
@@ -80,18 +84,6 @@ FactoryBot.define do
 
     # trait :with_editors do
     #   editors { build_list(:editor, 3) }
-    # end
-
-    # trait :with_iso_3166_1s do
-    #   iso_3166_1s { build_list(:iso_3166_1, 3) }
-    # end
-
-    # trait :with_iso_3166_2s do
-    #   iso_3166_2s { build_list(:iso_3166_2, 3) }
-    # end
-
-    # trait :with_iso_3166_3s do
-    #   iso_3166_3s { build_list(:iso_3166_3, 3) }
     # end
 
     trait :with_labels do

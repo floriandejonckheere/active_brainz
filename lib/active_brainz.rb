@@ -13,6 +13,7 @@ module ActiveBrainz
       @root ||= Pathname.new(File.expand_path(File.join("..", ".."), __FILE__))
     end
 
+    # rubocop:disable Metrics/AbcSize
     def setup
       @loader = Zeitwerk::Loader.for_gem
 
@@ -37,6 +38,7 @@ module ActiveBrainz
       # Load initializers
       Dir[root.join("config/initializers/*.rb")].sort.each { |f| require f }
     end
+    # rubocop:enable Metrics/AbcSize
   end
 end
 

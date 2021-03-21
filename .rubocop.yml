@@ -23,7 +23,7 @@ Lint/SafeNavigationWithEmpty:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 20
 
 Metrics/BlockLength:
   Max: 35
@@ -32,6 +32,9 @@ Metrics/BlockLength:
     - spec/**/*.rb
 
 Metrics/MethodLength:
+  Enabled: false
+
+Naming/VariableNumber:
   Enabled: false
 
 RSpec/FilePath:
