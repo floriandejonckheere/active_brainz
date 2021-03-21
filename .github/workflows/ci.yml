@@ -86,6 +86,7 @@ jobs:
       - name: Set version
         run: |
           echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
       - name: Publish to RubyGems
         run: |
           mkdir -p ~/.gem
