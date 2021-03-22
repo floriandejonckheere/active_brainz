@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir["README.md", "LICENSE.md", "Gemfile", "lib/active_brainz.rb",
                    "lib/active_brainz/version.rb", "lib/active_brainz/models/**/*.rb",
-                   "config/inflections.rb"]
+                   "lib/active_brainz/concerns/**/*.rb", "config/inflections.rb"]
   spec.bindir        = "bin"
   spec.executables   = []
   spec.require_paths = ["lib"]
