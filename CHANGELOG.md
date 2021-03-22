@@ -1,5 +1,9 @@
 # Changelog
 
+## ActiveBrainz v0.2.1
+
+- Update gemspec
+
 ## ActiveBrainz v0.2.0
 
 - Add ISO3166{1,2,3} models and associations to Area
