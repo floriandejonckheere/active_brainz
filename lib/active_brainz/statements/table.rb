@@ -6,7 +6,7 @@ require "fileutils"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :primary_key, :references, :attributes
+      attr_reader :primary_key, :references, :attributes, :namespace
 
       TEMPLATES = {
         model: File.read(ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")),
@@ -17,6 +17,15 @@ module ActiveBrainz
       def initialize(name, info, block, enabled)
         super
 
+        if /^l_/.match?(name)
+          # l_area_area => l/area_area
+          @namespace = "links"
+          @name = name.delete_prefix("l_")
+        else
+          # artist_alias_type => artist/artist_alias_type
+          @namespace = name.split("_").first
+        end
+
         # Primary key is either defined (primary_key: ...) or serial (id: :serial)
         @primary_key = info[:primary_key] || (info[:id] ? "id" : nil)
         @references = []
@@ -25,9 +34,6 @@ module ActiveBrainz
 
       def render!
         return unless enabled
-
-        # label_alias_type => label
-        namespace = name.split("_").first
 
         # Render model
         render(TEMPLATES[:model], ActiveBrainz.root.join("lib/active_brainz/models", namespace), "#{name}.rb")

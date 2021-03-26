@@ -34,8 +34,7 @@ module ActiveBrainz
         name = to_table
         name = name.pluralize if type == :has_many
         name = "#{from_table}_#{name}" if name == column
-
-        name
+        name.delete_prefix("l_")
       end
 
       def to_s
