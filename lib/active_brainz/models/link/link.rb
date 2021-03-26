@@ -6,315 +6,315 @@ module ActiveBrainz
 
     include HasBeginEndDate
 
-    # has_many :l_area_areas,
+    # has_many :area_areas,
     #          class_name: "LAreaArea",
     #          foreign_key: "link"
 
-    # has_many :l_area_artists,
+    # has_many :area_artists,
     #          class_name: "LAreaArtist",
     #          foreign_key: "link"
 
-    # has_many :l_area_events,
+    # has_many :area_events,
     #          class_name: "LAreaEvent",
     #          foreign_key: "link"
 
-    # has_many :l_area_instruments,
+    # has_many :area_instruments,
     #          class_name: "LAreaInstrument",
     #          foreign_key: "link"
 
-    # has_many :l_area_labels,
+    # has_many :area_labels,
     #          class_name: "LAreaLabel",
     #          foreign_key: "link"
 
-    # has_many :l_area_places,
+    # has_many :area_places,
     #          class_name: "LAreaPlace",
     #          foreign_key: "link"
 
-    # has_many :l_area_recordings,
+    # has_many :area_recordings,
     #          class_name: "LAreaRecording",
     #          foreign_key: "link"
 
-    # has_many :l_area_release_groups,
+    # has_many :area_release_groups,
     #          class_name: "LAreaReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_area_releases,
+    # has_many :area_releases,
     #          class_name: "LAreaRelease",
     #          foreign_key: "link"
 
-    # has_many :l_area_series,
+    # has_many :area_series,
     #          class_name: "LAreaSeries",
     #          foreign_key: "link"
 
-    # has_many :l_area_urls,
+    # has_many :area_urls,
     #          class_name: "LAreaUrl",
     #          foreign_key: "link"
 
-    # has_many :l_area_works,
+    # has_many :area_works,
     #          class_name: "LAreaWork",
     #          foreign_key: "link"
 
-    # has_many :l_artist_artists,
+    # has_many :artist_artists,
     #          class_name: "LArtistArtist",
     #          foreign_key: "link"
 
-    # has_many :l_artist_events,
+    # has_many :artist_events,
     #          class_name: "LArtistEvent",
     #          foreign_key: "link"
 
-    # has_many :l_artist_instruments,
+    # has_many :artist_instruments,
     #          class_name: "LArtistInstrument",
     #          foreign_key: "link"
 
-    # has_many :l_artist_labels,
+    # has_many :artist_labels,
     #          class_name: "LArtistLabel",
     #          foreign_key: "link"
 
-    # has_many :l_artist_places,
+    # has_many :artist_places,
     #          class_name: "LArtistPlace",
     #          foreign_key: "link"
 
-    # has_many :l_artist_recordings,
+    # has_many :artist_recordings,
     #          class_name: "LArtistRecording",
     #          foreign_key: "link"
 
-    # has_many :l_artist_release_groups,
+    # has_many :artist_release_groups,
     #          class_name: "LArtistReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_artist_releases,
+    # has_many :artist_releases,
     #          class_name: "LArtistRelease",
     #          foreign_key: "link"
 
-    # has_many :l_artist_series,
+    # has_many :artist_series,
     #          class_name: "LArtistSeries",
     #          foreign_key: "link"
 
-    # has_many :l_artist_urls,
+    # has_many :artist_urls,
     #          class_name: "LArtistUrl",
     #          foreign_key: "link"
 
-    # has_many :l_artist_works,
+    # has_many :artist_works,
     #          class_name: "LArtistWork",
     #          foreign_key: "link"
 
-    # has_many :l_event_events,
+    # has_many :event_events,
     #          class_name: "LEventEvent",
     #          foreign_key: "link"
 
-    # has_many :l_event_instruments,
+    # has_many :event_instruments,
     #          class_name: "LEventInstrument",
     #          foreign_key: "link"
 
-    # has_many :l_event_labels,
+    # has_many :event_labels,
     #          class_name: "LEventLabel",
     #          foreign_key: "link"
 
-    # has_many :l_event_places,
+    # has_many :event_places,
     #          class_name: "LEventPlace",
     #          foreign_key: "link"
 
-    # has_many :l_event_recordings,
+    # has_many :event_recordings,
     #          class_name: "LEventRecording",
     #          foreign_key: "link"
 
-    # has_many :l_event_release_groups,
+    # has_many :event_release_groups,
     #          class_name: "LEventReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_event_releases,
+    # has_many :event_releases,
     #          class_name: "LEventRelease",
     #          foreign_key: "link"
 
-    # has_many :l_event_series,
+    # has_many :event_series,
     #          class_name: "LEventSeries",
     #          foreign_key: "link"
 
-    # has_many :l_event_urls,
+    # has_many :event_urls,
     #          class_name: "LEventUrl",
     #          foreign_key: "link"
 
-    # has_many :l_event_works,
+    # has_many :event_works,
     #          class_name: "LEventWork",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_instruments,
+    # has_many :instrument_instruments,
     #          class_name: "LInstrumentInstrument",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_labels,
+    # has_many :instrument_labels,
     #          class_name: "LInstrumentLabel",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_places,
+    # has_many :instrument_places,
     #          class_name: "LInstrumentPlace",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_recordings,
+    # has_many :instrument_recordings,
     #          class_name: "LInstrumentRecording",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_release_groups,
+    # has_many :instrument_release_groups,
     #          class_name: "LInstrumentReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_releases,
+    # has_many :instrument_releases,
     #          class_name: "LInstrumentRelease",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_series,
+    # has_many :instrument_series,
     #          class_name: "LInstrumentSeries",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_urls,
+    # has_many :instrument_urls,
     #          class_name: "LInstrumentUrl",
     #          foreign_key: "link"
 
-    # has_many :l_instrument_works,
+    # has_many :instrument_works,
     #          class_name: "LInstrumentWork",
     #          foreign_key: "link"
 
-    # has_many :l_label_labels,
+    # has_many :label_labels,
     #          class_name: "LLabelLabel",
     #          foreign_key: "link"
 
-    # has_many :l_label_places,
+    # has_many :label_places,
     #          class_name: "LLabelPlace",
     #          foreign_key: "link"
 
-    # has_many :l_label_recordings,
+    # has_many :label_recordings,
     #          class_name: "LLabelRecording",
     #          foreign_key: "link"
 
-    # has_many :l_label_release_groups,
+    # has_many :label_release_groups,
     #          class_name: "LLabelReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_label_releases,
+    # has_many :label_releases,
     #          class_name: "LLabelRelease",
     #          foreign_key: "link"
 
-    # has_many :l_label_series,
+    # has_many :label_series,
     #          class_name: "LLabelSeries",
     #          foreign_key: "link"
 
-    # has_many :l_label_urls,
+    # has_many :label_urls,
     #          class_name: "LLabelUrl",
     #          foreign_key: "link"
 
-    # has_many :l_label_works,
+    # has_many :label_works,
     #          class_name: "LLabelWork",
     #          foreign_key: "link"
 
-    # has_many :l_place_places,
+    # has_many :place_places,
     #          class_name: "LPlacePlace",
     #          foreign_key: "link"
 
-    # has_many :l_place_recordings,
+    # has_many :place_recordings,
     #          class_name: "LPlaceRecording",
     #          foreign_key: "link"
 
-    # has_many :l_place_release_groups,
+    # has_many :place_release_groups,
     #          class_name: "LPlaceReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_place_releases,
+    # has_many :place_releases,
     #          class_name: "LPlaceRelease",
     #          foreign_key: "link"
 
-    # has_many :l_place_series,
+    # has_many :place_series,
     #          class_name: "LPlaceSeries",
     #          foreign_key: "link"
 
-    # has_many :l_place_urls,
+    # has_many :place_urls,
     #          class_name: "LPlaceUrl",
     #          foreign_key: "link"
 
-    # has_many :l_place_works,
+    # has_many :place_works,
     #          class_name: "LPlaceWork",
     #          foreign_key: "link"
 
-    # has_many :l_recording_recordings,
+    # has_many :recording_recordings,
     #          class_name: "LRecordingRecording",
     #          foreign_key: "link"
 
-    # has_many :l_recording_release_groups,
+    # has_many :recording_release_groups,
     #          class_name: "LRecordingReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_recording_releases,
+    # has_many :recording_releases,
     #          class_name: "LRecordingRelease",
     #          foreign_key: "link"
 
-    # has_many :l_recording_series,
+    # has_many :recording_series,
     #          class_name: "LRecordingSeries",
     #          foreign_key: "link"
 
-    # has_many :l_recording_urls,
+    # has_many :recording_urls,
     #          class_name: "LRecordingUrl",
     #          foreign_key: "link"
 
-    # has_many :l_recording_works,
+    # has_many :recording_works,
     #          class_name: "LRecordingWork",
     #          foreign_key: "link"
 
-    # has_many :l_release_group_release_groups,
+    # has_many :release_group_release_groups,
     #          class_name: "LReleaseGroupReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_release_group_series,
+    # has_many :release_group_series,
     #          class_name: "LReleaseGroupSeries",
     #          foreign_key: "link"
 
-    # has_many :l_release_group_urls,
+    # has_many :release_group_urls,
     #          class_name: "LReleaseGroupUrl",
     #          foreign_key: "link"
 
-    # has_many :l_release_group_works,
+    # has_many :release_group_works,
     #          class_name: "LReleaseGroupWork",
     #          foreign_key: "link"
 
-    # has_many :l_release_release_groups,
+    # has_many :release_release_groups,
     #          class_name: "LReleaseReleaseGroup",
     #          foreign_key: "link"
 
-    # has_many :l_release_releases,
+    # has_many :release_releases,
     #          class_name: "LReleaseRelease",
     #          foreign_key: "link"
 
-    # has_many :l_release_series,
+    # has_many :release_series,
     #          class_name: "LReleaseSeries",
     #          foreign_key: "link"
 
-    # has_many :l_release_urls,
+    # has_many :release_urls,
     #          class_name: "LReleaseUrl",
     #          foreign_key: "link"
 
-    # has_many :l_release_works,
+    # has_many :release_works,
     #          class_name: "LReleaseWork",
     #          foreign_key: "link"
 
-    # has_many :l_series_series,
+    # has_many :series_series,
     #          class_name: "LSeriesSeries",
     #          foreign_key: "link"
 
-    # has_many :l_series_urls,
+    # has_many :series_urls,
     #          class_name: "LSeriesUrl",
     #          foreign_key: "link"
 
-    # has_many :l_series_works,
+    # has_many :series_works,
     #          class_name: "LSeriesWork",
     #          foreign_key: "link"
 
-    # has_many :l_url_urls,
+    # has_many :url_urls,
     #          class_name: "LUrlUrl",
     #          foreign_key: "link"
 
-    # has_many :l_url_works,
+    # has_many :url_works,
     #          class_name: "LUrlWork",
     #          foreign_key: "link"
 
-    # has_many :l_work_works,
+    # has_many :work_works,
     #          class_name: "LWorkWork",
     #          foreign_key: "link"
 
