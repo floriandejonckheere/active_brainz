@@ -30,8 +30,6 @@ module ActiveBrainz
       end
 
       def add_foreign_key(from_table, to_table, **options)
-        return if %w(entity0 entity1).include? options[:column]
-
         enabled = tables[from_table].enabled && tables[to_table].enabled
 
         tables[from_table].references << Reference.new(from_table, to_table, :belongs_to, enabled, options)
