@@ -30,6 +30,9 @@ module ActiveBrainz
         comment
         locale
         primary_for_locale
+        entity0_credit
+        entity1_credit
+        link_order
         edits_pending
         last_updated
       ).freeze
