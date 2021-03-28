@@ -60,7 +60,8 @@ module ActiveBrainz
       def integer(name, **options)
         reference = references.find { |ref| ref.column == name }
 
-        return reference.null = true if reference
+        # Set nullability on reference
+        return reference.null = options.fetch(:null, true) if reference
 
         attributes << Attribute.new(name, :integer, options)
       end
