@@ -13,6 +13,8 @@ module ActiveBrainz
         end_date_month
         end_date_day
         ended
+        entity0
+        entity1
         gid
         child_order
       ).freeze
