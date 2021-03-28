@@ -4,11 +4,6 @@ module ActiveBrainz
   class AreaArea < Base
     self.table_name = "l_area_area"
 
-    belongs_to :area_area_link,
-               class_name: "Link",
-               foreign_key: "link",
-               optional: true
-
     belongs_to :area0,
                class_name: "Area",
                foreign_key: "entity0"
@@ -16,6 +11,10 @@ module ActiveBrainz
     belongs_to :area1,
                class_name: "Area",
                foreign_key: "entity1"
+
+    belongs_to :area_area_link,
+               class_name: "Link",
+               foreign_key: "link"
 
     attribute :entity0_credit
     attribute :entity1_credit
