@@ -34,7 +34,12 @@ module ActiveBrainz
         name = to_table
         name = name.pluralize if type == :has_many
         name = "#{from_table}_#{name}" if name == column
-        name.delete_prefix("l_")
+        name = name.delete_prefix("l_")
+
+        # Append entity number (area => area0 for entity0 column)
+        name << column.last if %w(entity0 entity1).include?(column)
+
+        name
       end
 
       def to_s
