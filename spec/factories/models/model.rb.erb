@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :<%= table_name %>, class: "ActiveBrainz::<%= class_name %>" do
+  factory :<%= name %>, class: "ActiveBrainz::<%= class_name %>" do
     <%- Array(primary_key).reject { |p| p == "id"}.each do |key| -%>
     sequence(:<%= key %>)
     <%- end -%>

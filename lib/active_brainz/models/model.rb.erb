@@ -7,6 +7,7 @@ module ActiveBrainz
     self.primary_key = <%= primary_key.respond_to?(:each) ? "%w(#{primary_key.join " "})" : "\"#{primary_key}\"" %>
     <%- end -%>
     <%- if gid? -%>
+
     include HasGID
     <%- end -%>
     <%- if begin_end_date? %>

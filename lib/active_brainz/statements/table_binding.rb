@@ -42,10 +42,6 @@ module ActiveBrainz
         name.demodulize.camelize
       end
 
-      def table_name
-        name.demodulize
-      end
-
       def gid?
         attributes.any? { |attribute| attribute.name == "gid" }
       end

@@ -6,7 +6,12 @@ require "fileutils"
 module ActiveBrainz
   module Statements
     class Table < Base
-      attr_reader :primary_key, :references, :attributes, :namespace
+      attr_reader :table_name,
+                  :name,
+                  :namespace,
+                  :primary_key,
+                  :references,
+                  :attributes
 
       TEMPLATES = {
         model: File.read(ActiveBrainz.root.join("lib/active_brainz/models/model.rb.erb")),
@@ -16,6 +21,8 @@ module ActiveBrainz
 
       def initialize(name, info, block, enabled)
         super
+
+        @table_name = name
 
         if /^l_/.match?(name)
           # l_area_area => l/area_area
