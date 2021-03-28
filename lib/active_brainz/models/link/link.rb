@@ -6,9 +6,9 @@ module ActiveBrainz
 
     include HasBeginEndDate
 
-    # has_many :area_areas,
-    #          class_name: "LAreaArea",
-    #          foreign_key: "link"
+    has_many :area_areas,
+             class_name: "LAreaArea",
+             foreign_key: "link"
 
     # has_many :area_artists,
     #          class_name: "LAreaArtist",

@@ -5,7 +5,7 @@ RSpec.describe ActiveBrainz::Link, type: :model do
 
   it_behaves_like "it has a begin and end date"
 
-  # it { is_expected.to have_many :l_area_areas }
+  it { is_expected.to have_many :l_area_areas }
   # it { is_expected.to have_many :l_area_artists }
   # it { is_expected.to have_many :l_area_events }
   # it { is_expected.to have_many :l_area_instruments }

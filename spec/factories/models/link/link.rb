@@ -25,9 +25,9 @@ FactoryBot.define do
 
     ended { end_date.present? }
 
-    # trait :with_l_area_areas do
-    #   l_area_areas { build_list(:l_area_area, 3) }
-    # end
+    trait :with_l_area_areas do
+      l_area_areas { build_list(:l_area_area, 3) }
+    end
 
     # trait :with_l_area_artists do
     #   l_area_artists { build_list(:l_area_artist, 3) }

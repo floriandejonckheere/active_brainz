@@ -114,7 +114,7 @@ module ActiveBrainz
       "iso_3166_3",
       # "isrc",
       # "iswc",
-      # "l_area_area",
+      "l_area_area",
       # "l_area_artist",
       # "l_area_event",
       # "l_area_instrument",
