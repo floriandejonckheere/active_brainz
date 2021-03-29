@@ -1,5 +1,10 @@
 # Changelog
 
+## ActiveBrainz v0.3.0
+
+- Add Link{,Type} models
+- Add AreaArea model
+
 ## ActiveBrainz v0.2.1
 
 - Update gemspec
