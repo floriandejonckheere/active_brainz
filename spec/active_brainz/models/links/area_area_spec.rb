@@ -5,8 +5,8 @@ RSpec.describe ActiveBrainz::AreaArea, type: :model do
 
   it { is_expected.to belong_to(:area_area_link).optional }
 
-  it { is_expected.to belong_to :entity0 }
-  it { is_expected.to belong_to :entity1 }
+  it { is_expected.to belong_to :area0 }
+  it { is_expected.to belong_to :area1 }
 
   it { is_expected.to respond_to :entity0_credit }
   it { is_expected.to respond_to :entity1_credit }
