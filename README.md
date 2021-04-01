@@ -69,6 +69,13 @@ Github Actions will automatically run the test suite, build the `.gem` file and 
 
 If MusicBrainz' database schema version gets bumped, don't forget to bump the schema version in `lib/active_brainz/version.rb` as well.
 
+### Implementing a new model
+
+1. Uncomment the table in `lib/active_brainz/database.rb`
+1. Run `rake active_brainz:models:render`
+1. Review the generated models, specs and factories
+1. Uncomment associations to new models in existing models
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [https://github.com/floriandejonckheere/active_brainz](https://github.com/floriandejonckheere/active_brainz). 
