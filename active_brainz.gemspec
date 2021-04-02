@@ -25,7 +25,8 @@ Gem::Specification.new do |spec|
   spec.executables   = []
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activerecord"
+  spec.add_runtime_dependency "activerecord", "~> 6.1"
+  spec.add_runtime_dependency "composite_primary_keys", "~> 13"
   spec.add_runtime_dependency "pg"
   spec.add_runtime_dependency "zeitwerk"
 
