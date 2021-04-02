@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "active_record"
+require "composite_primary_keys"
 
 module ActiveBrainz
   class Base < ActiveRecord::Base

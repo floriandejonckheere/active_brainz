@@ -3,22 +3,18 @@
 module ActiveBrainz
   class ArtistCreditName < Base
     self.table_name = "artist_credit_name"
-    self.primary_key = %w(artist_credit position)
+    self.primary_keys = %w(artist_credit position)
 
     belongs_to :artist_credit_name_artist,
                class_name: "Artist",
-               foreign_key: "artist",
-               optional: true
+               foreign_key: "artist"
 
     belongs_to :artist_credit_name_artist_credit,
                class_name: "ArtistCredit",
-               foreign_key: "artist_credit",
-               optional: true
+               foreign_key: "artist_credit"
 
     attribute :name
-
     attribute :position, :integer
-
     attribute :join_phrase
   end
 end

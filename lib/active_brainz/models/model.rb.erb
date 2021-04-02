@@ -4,7 +4,10 @@ module ActiveBrainz
   class <%= class_name %> < Base
     self.table_name = "<%= table_name %>"
     <%- if primary_key && primary_key != "id" -%>
-    self.primary_key = <%= primary_key.respond_to?(:each) ? "%w(#{primary_key.join " "})" : "\"#{primary_key}\"" %>
+    <%- primary_key.respond_to?(:each) -%>
+    self.primary_keys = %w(<%= primary_key.join(" ") %>)
+    <%- else -%>
+    self.primary_key = "<%= primary_key %>"
     <%- end -%>
     <%- if gid? -%>
 
