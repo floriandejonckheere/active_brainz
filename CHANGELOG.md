@@ -1,5 +1,9 @@
 # Changelog
 
+## ActiveBrainz v0.3.1
+
+- Add support for composite primary keys
+
 ## ActiveBrainz v0.3.0
 
 - Add Link{,Type} models
